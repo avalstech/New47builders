@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>47Builders | Artisan Signup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <div class="logo-placeholder">47B</div>
+        <span class="brand-name">47Builders</span>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#builders">Builders</a>
+        <a href="artisans.html">Artisans</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="artisan-signup.html" class="nav-cta">Join as Artisan</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle">☰</button>
+    </div>
+  </header>
+
+  <main class="main auth-main">
+
+    <section class="auth-hero">
+      <h1>Join 47Builders as a Verified Artisan</h1>
+      <p>
+        Get access to high value projects from diaspora clients, build your reputation,
+        and get paid securely through milestone based payments.
+      </p>
+    </section>
+
+    <section class="auth-section">
+      <div class="auth-card">
+        <h2>Artisan Signup Form</h2>
+        <p class="auth-subtitle">
+          Fill in your details and our verification team will review your application.
+        </p>
+
+        <form id="artisanSignupForm" class="form auth-form">
+          <div class="formRow">
+            <input
+              type="text"
+              name="fullName"
+              class="input"
+              placeholder="Full Name"
+              required
+            />
+            <input
+              type="text"
+              name="businessName"
+              class="input"
+              placeholder="Business Name (optional)"
+            />
+          </div>
+
+          <div class="formRow">
+            <input
+              type="tel"
+              name="phone"
+              class="input"
+              placeholder="Phone Number (WhatsApp enabled)"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              class="input"
+              placeholder="Email"
+              required
+            />
+          </div>
+
+          <div class="formRow">
+            <input
+              type="text"
+              name="location"
+              class="input"
+              placeholder="Base Location (City, State)"
+              required
+            />
+            <select name="primaryTrade" class="input" required>
+              <option value="">Primary Trade</option>
+              <option value="Electrician">Electrician</option>
+              <option value="Plumber">Plumber</option>
+              <option value="Carpenter">Carpenter and Furniture Maker</option>
+              <option value="Tiler">Tiler and Finishing Expert</option>
+              <option value="Painter">Painter and Interior Finisher</option>
+              <option value="Welder">Welder and Metal Fabricator</option>
+              <option value="Bricklayer">Bricklayer and Mason</option>
+              <option value="Other">Other Construction Trade</option>
+            </select>
+          </div>
+
+          <div class="formRow">
+            <input
+              type="number"
+              name="experienceYears"
+              class="input"
+              placeholder="Years of Experience"
+              min="0"
+              required
+            />
+            <input
+              type="text"
+              name="ninOrId"
+              class="input"
+              placeholder="NIN or Government ID Number"
+              required
+            />
+          </div>
+
+          <div class="formRow">
+            <input
+              type="text"
+              name="portfolioLink"
+              class="input"
+              placeholder="Portfolio Link (Instagram, Google Drive, website)"
+            />
+            <input
+              type="text"
+              name="referralCode"
+              class="input"
+              placeholder="Referral Code (if any)"
+            />
+          </div>
+
+          <textarea
+            name="about"
+            class="textarea"
+            placeholder="Tell us about your work, typical project size, and the locations you serve."
+            required
+          ></textarea>
+
+          <div class="auth-checkbox-row">
+            <label class="checkbox-label">
+              <input type="checkbox" name="acceptVerification" required />
+              <span>I agree to provide valid documents for KYC and project verification.</span>
+            </label>
+          </div>
+
+          <div class="auth-checkbox-row">
+            <label class="checkbox-label">
+              <input type="checkbox" name="acceptTerms" required />
+              <span>
+                I accept the 47Builders Terms of Service and understand that payments
+                are milestone based and held in escrow.
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" class="primaryButton auth-submit">
+            Submit Application
+          </button>
+
+          <p class="formMessage" id="artisanSignupMessage"></p>
+        </form>
+
+        <p class="auth-hint">
+          Already verified with 47Builders
+          <a href="index.html#get-started">start a project or update your profile</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
