@@ -1,0 +1,104 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Under Construction</title>
+    <meta name="description" content="We’re building something great. Contact us on WhatsApp or chat with our AI assistant." />
+    <link rel="stylesheet" href="./stylesuc.css" />
+  </head>
+
+  <body>
+    <main class="wrap">
+      <section class="card" aria-labelledby="title">
+        <div class="badge">🚧 Under Construction</div>
+
+        <h1 id="title">We’re building something great</h1>
+        <p class="sub">
+          Our website is currently under construction. In the meantime, you can reach us on WhatsApp or chat with our AI assistant.
+        </p>
+
+        <div class="actions">
+          <!-- WhatsApp CTA: replace phone number with yours in international format (no +) -->
+          <a
+            class="btn primary"
+            href="https://wa.me/2348012345678?text=Hello%20I%20want%20to%20make%20an%20enquiry."
+            target="_blank"
+            rel="noopener"
+            aria-label="Contact us on WhatsApp"
+          >
+            WhatsApp Us
+          </a>
+
+          <!-- WhatsApp Call CTA -->
+          <a class="btn" href="tel:+2348012345678" aria-label="Call us by phone">
+            Call Now
+          </a>
+        </div>
+
+        <div class="mini">
+          <div class="miniItem">
+            <div class="miniTitle">Launch Updates</div>
+            <div class="miniText">We’re working daily to go live soon.</div>
+          </div>
+          <div class="miniItem">
+            <div class="miniTitle">Support</div>
+            <div class="miniText">Fast response on WhatsApp.</div>
+          </div>
+          <div class="miniItem">
+            <div class="miniTitle">AI Assistant</div>
+            <div class="miniText">Ask questions anytime.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Floating buttons -->
+    <a
+      class="fab fab-whatsapp"
+      href="https://wa.me/2348012345678?text=Hello%20I%20need%20help."
+      target="_blank"
+      rel="noopener"
+      aria-label="Open WhatsApp"
+      title="Chat on WhatsApp"
+    >
+      WA
+    </a>
+
+    <button class="fab fab-chat" id="openChat" aria-label="Open AI chat" title="AI Chat">
+      AI
+    </button>
+
+    <!-- Chatbot widget -->
+    <section class="chatbot" id="chatbot" aria-label="AI Chatbot" aria-hidden="true">
+      <header class="chatbot-header">
+        <div class="chatbot-title">
+          <span class="dot"></span>
+          AI Assistant
+        </div>
+        <button class="chatbot-close" id="closeChat" aria-label="Close chat">✕</button>
+      </header>
+
+      <div class="chatbot-body" id="chatBody" role="log" aria-live="polite"></div>
+
+      <form class="chatbot-form" id="chatForm">
+        <input
+          type="text"
+          id="chatInput"
+          placeholder="Type your question..."
+          autocomplete="off"
+          aria-label="Chat input"
+          required
+        />
+        <button type="submit" class="sendBtn" aria-label="Send message">Send</button>
+      </form>
+
+      <footer class="chatbot-footer">
+        Demo bot. Replace with your real API when ready.
+      </footer>
+    </section>
+
+    <script src="./chatbotus.js"></script>
+  </body>
+</html>

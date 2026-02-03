@@ -1,7 +1,0 @@
-
-__pycache__/
-myenv/
-
-# Environment variables
-.env
-.env.*

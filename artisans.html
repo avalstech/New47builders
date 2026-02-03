@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>47Builders | Verified Artisans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR (same as homepage) -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <div class="logo-placeholder">47B</div>
+        <span class="brand-name">47Builders</span>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#builders">Builders</a>
+        <a href="artisans.html" class="active-link">Artisans</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#get-started" class="nav-cta">Start Project</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle">☰</button>
+    </div>
+  </header>
+
+  <main class="main" style="padding-top:80px">
+
+    <!-- PAGE HERO -->
+    <section class="artisan-hero">
+      <h1>Verified Artisans Ready to Work</h1>
+      <p>Browse over 150 trusted electricians, carpenters, plumbers, tilers, and finishing experts across Nigeria.</p>
+
+      <div class="search-row">
+        <input type="text" id="artisanSearch" placeholder="Search artisans by skill or name..." class="search-input" />
+        <select class="search-filter" id="artisanLocationFilter">
+          <option value="">Filter by Location</option>
+          <option value="Lagos">Lagos</option>
+          <option value="Abuja">Abuja</option>
+          <option value="Port Harcourt">Port Harcourt</option>
+          <option value="Enugu">Enugu</option>
+          <option value="Owerri">Owerri</option>
+          <option value="Benin City">Benin City</option>
+          <option value="Kano">Kano</option>
+        </select>
+        <button class="primaryButton" id="artisanSearchBtn">Search</button>
+      </div>
+    </section>
+
+    <!-- SCROLLING ARTISANS DIRECTORY -->
+    <section class="section">
+      <div class="sectionContent">
+        <h2 class="sectionTitle">Available Artisans</h2>
+
+        <!-- Scrollable container -->
+        <div class="artisan-scroll-container">
+          <div class="artisan-grid" id="artisanGrid">
+            <!-- 150 artisan cards will be injected here by script.js -->
+          </div>
+        </div>
+
+        <!-- Simple note instead of pagination -->
+        <p class="sectionText" style="margin-top:1.5rem; font-size:0.9rem; color:#9ca3af;">
+          47Builders best 150 Artisans in Nigeria rightnow.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
