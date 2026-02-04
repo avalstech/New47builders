@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!-- Why 47Builders Exists -->
+<section class="section">
+    <div class="sectionContent">
+        <h2 class="sectionTitle">Why 47Builders Exists</h2>
+        <p class="sectionText">
+            Building from the diaspora shouldn’t be stressful or risky.
+            47Builders gives you a trusted, technology-driven platform to hire verified professionals,
+            manage construction milestones, and ensure every phase of your project is delivered exactly as promised.
+        </p>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="section" id="how-it-works">
+    <div class="sectionContent">
+        <h2 class="sectionTitle">How It Works</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>1. Find Verified Builders</h3>
+                <p>
+                    Browse a curated list of vetted builders and artisans, complete with ID verification,
+                    past projects, and authentic reviews.
+                </p>
+            </div>
+            <div class="card">
+                <h3>2. Get Transparent Quotes</h3>
+                <p>
+                    Submit your project details and receive structured quotes you can compare side-by-side.
+                </p>
+            </div>
+            <div class="card">
+                <h3>3. Track Your Build Remotely</h3>
+                <p>
+                    Monitor progress with photo and video reports, milestone updates, and real-time messaging.
+                </p>
+            </div>
+            <div class="card">
+                <h3>4. Pay Securely with Escrow</h3>
+                <p>
+                    Your funds are protected and only released after approved milestones, ensuring full accountability.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact Section -->
+<section class="section" id="contact">
+    <div class="sectionContent">
+        <h2 class="sectionTitle">Contact Us</h2>
+        <p class="sectionText">
+            Share your project details and our team will connect you with verified builders and artisans.
+        </p>
+        <form class="form" id="contactForm">
+            <div class="formRow">
+                <input type="text" name="name" placeholder="Full Name" class="input" required />
+                <input type="email" name="email" placeholder="Email" class="input" required />
+            </div>
+            <div class="formRow">
+                <input type="text" name="country" placeholder="Country of Residence" class="input" />
+                <input type="text" name="location" placeholder="Project Location (City, Country)" class="input" />
+            </div>
+            <textarea name="project" placeholder="Tell us about your project" class="textarea" required></textarea>
+            <button type="submit" class="primaryButton">
+                Submit Project
+            </button>
+            <p class="formMessage" id="formMessage"></p>
+        </form>
+    </div>
+</section>
+
+{% endblock content %}

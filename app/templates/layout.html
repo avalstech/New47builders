@@ -1,0 +1,102 @@
+<!-- index.html -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>47Builders | Build Your Dream Home in Africa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Build your dream home in Africa with verified builders and artisans, transparent project tracking, and secure milestone-based payments.">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" />
+</head>
+
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <div class="logo" <a href=" index.html">
+          <img src="{{url_for('static', filename='images/logo47builders.png')}}" alt="47builders">
+          </a>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="{{url_for('landing_page')}}">Home</a>
+        <a href="{{url_for('how_it_works_page')}}">How It Works</a>
+        <a href="{{url_for('builders_page')}}">Builders</a>
+        <a href="{{url_for('artisans_page')}}">Artisans</a>
+        <a href="{{url_for('contact_page')}}">Contact</a>
+        <a href="{{url_for('start_project_page')}}" class="nav-cta">Start Project</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle">☰</button>
+    </div>
+  </header>
+<main class="main">
+  {% block content %}
+   {% endblock content %}
+   <footer class="footer">
+      <div class="footerContent">
+        <p>
+          47Builders helps Africans in the diaspora build safely, transparently, and confidently.
+          Verified builders. Secured payments. Trusted construction.
+        </p>
+        <nav class="footerNav">
+          <a href="{{url_for('how_it_works_page')}}">How It Works</a>
+          <a href="{{url_for('builders_page')}}">Builders</a>
+          <a href="{{url_for('artisans_page')}}">Artisans</a>
+          <a href="{{url_for('contact_page')}}">Contact</a>
+          <a href="{{url_for('contact_page')}}">Support</a>
+          <a href="#top">Back to top</a>
+          <div class="icons-hover-black">
+            <a href="https://web.facebook.com/Mjsflo/" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa fa-youtube"></i></a>
+            <a href="#" aria-label="Dribbble"><i class="fa fa-dribbble"></i></a>
+            <a href="https://www.linkedin.com/company/mjsflo/" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+          </div>
+
+      </div>
+    </footer>
+</main>
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/2348012345678?text=Hi%2047Builders%2C%20I%20want%20to%20start%20a%20project."
+    class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <span class="wa-icon">WA</span>
+  </a>
+
+  <!-- AI Chatbot Placeholder -->
+  <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open 47Builders AI Assistant">
+    AI
+  </button>
+
+  <div class="chatbot-widget" id="chatbotWidget" aria-hidden="true">
+    <div class="chatbot-header">
+      <span>47Builders AI Assistant</span>
+      <button class="chatbot-close" id="chatbotClose" aria-label="Close chat">
+        ×
+      </button>
+    </div>
+    <div class="chatbot-body">
+      <p class="chatbot-message bot">
+        Hi, I’m your 47Builders AI assistant. I can help you understand how the platform works, connect with builders,
+        or start a project.
+      </p>
+      <p class="chatbot-message hint">
+        This is a demo placeholder. Connect this widget to your real AI backend later.
+      </p>
+    </div>
+    <form class="chatbot-input-row" id="chatbotForm">
+      <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Ask a question about your project..."
+        autocomplete="off" />
+      <button type="submit" class="chatbot-send">Send</button>
+    </form>
+  </div>
+
+  <script src="{{url_for('static', filename='js/script.js')}}"></script>
+</body>
+
+</html>

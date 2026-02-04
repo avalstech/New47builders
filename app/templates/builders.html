@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<!-- Featured Builders -->
+<section class="section">
+    <div class="sectionContent">
+        <h2 class="sectionTitle">Meet Our Verified Professionals</h2>
+        <p class="sectionText">
+            From masons and carpenters to electricians, plumbers, and structural engineers,
+            all profiles are verified and rated by real clients.
+        </p>
+        <a href="{{url_for('artisans_page')}}" class="secondaryButton">
+            Browse Builders and Artisans
+        </a>
+    </div>
+</section>
+
+<!-- For Builders and Artisans -->
+<section class="section" id="builders">
+    <div class="sectionContent">
+        <h2 class="sectionTitle">For Builders and Artisans</h2>
+        <p class="sectionText">
+            Earn more, build your reputation, and work with high-value clients around the world.
+        </p>
+        <p class="sectionText">
+            Register, get verified, and start receiving projects from trusted diaspora clients.
+        </p>
+        <a href="{{url_for('artisan_signup_page')}}" class="primaryButton">
+            Become a Verified Builder or Artisan
+        </a>
+    </div>
+</section>
+
+
+
+{% endblock content %}
