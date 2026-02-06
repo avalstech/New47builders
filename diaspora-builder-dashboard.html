@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0B0F19" />
+
+  <title>47Builders | Diaspora Builder Dashboard</title>
+  <meta name="description" content="Diaspora builder dashboard for site project status, posting jobs, hiring talent, messages, funding account, live site view, and account balance." />
+
+  <link rel="stylesheet" href="diaspora-builder-dashboard.css" />
+  <script src="diaspora-builder-dashboard.js" defer></script>
+</head>
+
+<body>
+  <a class="skipLink" href="#main">Skip to content</a>
+
+  <header class="topbar" data-elevate>
+    <div class="container topbarRow">
+      <a class="brand" href="/" aria-label="47Builders Home">
+        <img src="assets/logo.png" alt="47Builders logo" width="38" height="38" />
+        <div class="brandText">
+          <strong>47Builders</strong>
+          <span class="muted">Diaspora Dashboard</span>
+        </div>
+      </a>
+
+      <div class="topbarRight">
+        <button class="pillBtn" id="siteViewBtn" type="button" aria-label="Open live site view">
+          <span class="dot live" aria-hidden="true"></span>
+          <span>Live site view</span>
+        </button>
+
+        <button class="pillBtn" id="timezoneBtn" type="button" aria-label="Timezone">
+          <span class="dot" id="tzDot" aria-hidden="true"></span>
+          <span id="tzText">Timezone: WAT</span>
+        </button>
+
+        <button class="iconBtn" id="notifBtn" type="button" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22a2 2 0 0 0 2-2H10a2 2 0 0 0 2 2zm6-6V11a6 6 0 1 0-12 0v5L4 18v1h16v-1l-2-2z"></path>
+          </svg>
+        </button>
+
+        <button class="userChip" id="userMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
+          <span class="avatar" aria-hidden="true">D</span>
+          <span class="userMeta">
+            <span class="userName" id="userName">Diaspora Builder</span>
+            <span class="userRole" id="userRole">Owner</span>
+          </span>
+          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 10l5 5 5-5H7z"></path>
+          </svg>
+        </button>
+
+        <div class="menu" id="userMenu" role="menu" aria-label="User menu" hidden>
+          <button role="menuitem" type="button" id="menuProfile">Profile</button>
+          <button role="menuitem" type="button" id="menuSettings">Settings</button>
+          <button role="menuitem" type="button" id="menuLogout">Log out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar" aria-label="Sidebar navigation">
+      <div class="sideSection">
+        <div class="sideTitle">Your projects</div>
+
+        <div class="projectPicker" aria-label="Project selector">
+          <select id="projectSelect" aria-label="Select project">
+            <option value="p1" selected>Lekki Duplex Renovation</option>
+            <option value="p2">Abuja 4-Bed Bungalow</option>
+            <option value="p3">Enugu Extension Build</option>
+          </select>
+          <button class="btn small" id="addProjectBtn" type="button">Add</button>
+        </div>
+
+        <div class="sideMini">
+          <div class="label">Active site</div>
+          <div class="value" id="activeProjectName">Lekki Duplex Renovation</div>
+          <div class="mutedSmall" id="activeProjectMeta">Client-managed · Nigeria</div>
+        </div>
+      </div>
+
+      <div class="sideSection">
+        <div class="sideTitle">Workspace</div>
+
+        <nav class="sideNav">
+          <a href="#overview" class="active" data-view="overview">
+            <span class="ico" aria-hidden="true">🏗️</span>
+            Site project status
+          </a>
+
+          <a href="#post-job" data-view="post-job">
+            <span class="ico" aria-hidden="true">📢</span>
+            Post job
+          </a>
+
+          <a href="#hire" data-view="hire">
+            <span class="ico" aria-hidden="true">🧰</span>
+            Hire talent
+          </a>
+
+          <a href="#messages" data-view="messages">
+            <span class="ico" aria-hidden="true">💬</span>
+            Messages
+            <span class="badge" id="messagesBadge">0</span>
+          </a>
+
+          <a href="#fund" data-view="fund">
+            <span class="ico" aria-hidden="true">➕</span>
+            Fund account
+          </a>
+
+          <a href="#wallet" data-view="wallet">
+            <span class="ico" aria-hidden="true">💰</span>
+            Account balance
+          </a>
+
+          <a href="#live" data-view="live">
+            <span class="ico" aria-hidden="true">📷</span>
+            Live site view
+          </a>
+        </nav>
+      </div>
+
+      <div class="sideSection">
+        <div class="sideTitle">Quick actions</div>
+        <button class="sideBtn" id="btnPostJob" type="button">Post a job</button>
+        <button class="sideBtn" id="btnHireTalent" type="button">Hire talent</button>
+        <button class="sideBtn" id="btnFundAccount" type="button">Fund account</button>
+        <button class="sideBtn" id="btnRequestUpdate" type="button">Request site update</button>
+      </div>
+
+      <div class="sideSection">
+        <div class="sideHint">
+          Tip: For diaspora owners, combine “Live site view” + milestone photos for real oversight.
+        </div>
+      </div>
+    </aside>
+
+    <main id="main" class="content" tabindex="-1">
+      <section class="pageHead" id="overview">
+        <div>
+          <h1>Diaspora builder dashboard</h1>
+          <p class="muted">Track site progress in Nigeria from anywhere, hire verified talent, and control spending.</p>
+        </div>
+
+        <div class="headActions">
+          <button class="btn" id="refreshBtn" type="button">Refresh</button>
+          <button class="btn primary" id="openLiveBtn" type="button">Open live site</button>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <div class="cardTop">
+            <h2>Site project status</h2>
+            <div class="cardTopRight">
+              <button class="linkBtn" id="viewTimelineBtn" type="button">Timeline</button>
+              <button class="linkBtn" id="editProjectBtn" type="button">Update</button>
+            </div>
+          </div>
+
+          <div class="projectBox">
+            <div class="projRow">
+              <div>
+                <div class="label">Site</div>
+                <div class="value" id="projName">Lekki Duplex Renovation</div>
+              </div>
+              <div>
+                <div class="label">Builder on site</div>
+                <div class="value" id="projBuilder">47Builders Verified Team</div>
+              </div>
+            </div>
+
+            <div class="projRow">
+              <div>
+                <div class="label">Current milestone</div>
+                <div class="value" id="projMilestone">Floor tiling (Phase 2)</div>
+              </div>
+              <div>
+                <div class="label">Status</div>
+                <div class="statusPill" id="projStatus">In progress</div>
+              </div>
+            </div>
+
+            <div class="progWrap" aria-label="Milestone progress">
+              <div class="progBar" id="projBar" style="width: 62%"></div>
+            </div>
+
+            <div class="projFoot">
+              <div class="mutedSmall" id="projMeta">Due in 6 days · Last update: today</div>
+              <div class="projBtns">
+                <button class="btn small" id="requestUpdateBtn" type="button">Request update</button>
+                <button class="btn small primary" id="approveMilestoneBtn" type="button">Approve milestone</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="wallet">
+          <div class="cardTop">
+            <h2>Account balance</h2>
+            <button class="linkBtn" id="fundFromWalletBtn" type="button">Fund</button>
+          </div>
+
+          <div class="walletBox">
+            <div class="walletMain">
+              <div class="walletAmt" id="walletBalance">₦0</div>
+              <div class="mutedSmall">Available balance</div>
+            </div>
+
+            <div class="walletGrid">
+              <div class="mini">
+                <div class="label">Pending</div>
+                <div class="value" id="walletPending">₦0</div>
+              </div>
+              <div class="mini">
+                <div class="label">This month</div>
+                <div class="value" id="walletMonth">₦0</div>
+              </div>
+            </div>
+
+            <button class="btn primary" id="viewWalletBtn" type="button">View wallet</button>
+          </div>
+        </article>
+
+        <article class="card full" id="post-job">
+          <div class="cardTop">
+            <h2>Post job</h2>
+            <div class="mutedSmall">Create a job request for verified artisans and teams.</div>
+          </div>
+
+          <form class="form" id="postJobForm" novalidate>
+            <div class="formRow3">
+              <label class="field">
+                Job title
+                <input name="title" type="text" placeholder="Example: Plumbing inspection + fix leaks" required />
+              </label>
+
+              <label class="field">
+                Skill needed
+                <select name="skill" required>
+                  <option value="">Select</option>
+                  <option value="tiling">Tiling</option>
+                  <option value="masonry">Masonry</option>
+                  <option value="carpentry">Carpentry</option>
+                  <option value="plumbing">Plumbing</option>
+                  <option value="electrical">Electrical</option>
+                  <option value="painting">Painting</option>
+                  <option value="interior">Interior finishing</option>
+                  <option value="supervision">Site supervision</option>
+                </select>
+              </label>
+
+              <label class="field">
+                City
+                <select name="city" required>
+                  <option value="">Select</option>
+                  <option value="lagos">Lagos</option>
+                  <option value="abuja">Abuja</option>
+                  <option value="ph">Port Harcourt</option>
+                  <option value="enugu">Enugu</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="formRow3">
+              <label class="field">
+                Budget (₦)
+                <input name="budget" type="number" min="0" step="1000" placeholder="250000" required />
+              </label>
+
+              <label class="field">
+                Start date
+                <input name="startDate" type="date" required />
+              </label>
+
+              <label class="field">
+                Payment release
+                <select name="release" required>
+                  <option value="">Select</option>
+                  <option value="milestone">Milestone-based</option>
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="field">
+              Job description
+              <textarea name="desc" rows="4" placeholder="Scope, materials provided, site address rule (share later), deliverables, and timeline." required></textarea>
+            </label>
+
+            <div class="formActions">
+              <button class="btn" type="reset">Clear</button>
+              <button class="btn primary" type="submit">Post job</button>
+            </div>
+
+            <div class="formMsg" id="postJobMsg" role="status" aria-live="polite"></div>
+          </form>
+
+          <div class="sectionDivider"></div>
+
+          <div class="cardTop" style="margin-top:8px">
+            <h3 class="h3">Your posted jobs</h3>
+            <div class="mutedSmall">Manage job posts and invites sent to talent.</div>
+          </div>
+          <div class="list" id="postedJobsList" aria-label="Posted jobs list"></div>
+        </article>
+
+        <article class="card full" id="hire">
+          <div class="cardTop">
+            <h2>Hire talent</h2>
+            <div class="cardTopRight">
+              <input class="search" id="talentSearch" type="search" placeholder="Search by skill or name" aria-label="Search talent" />
+              <select class="miniSelect" id="verifyFilter" aria-label="Verification filter">
+                <option value="all" selected>All</option>
+                <option value="verified">Verified only</option>
+              </select>
+              <button class="btn small" id="refreshTalentBtn" type="button">Refresh</button>
+            </div>
+          </div>
+
+          <div class="list" id="talentList" aria-label="Talent list"></div>
+        </article>
+
+        <article class="card full" id="messages">
+          <div class="cardTop">
+            <h2>Messages</h2>
+            <div class="cardTopRight">
+              <input class="search" id="messageSearch" type="search" placeholder="Search messages" aria-label="Search messages" />
+              <button class="btn small" id="newMsgBtn" type="button">New message</button>
+            </div>
+          </div>
+
+          <div class="messages">
+            <div class="threads" id="threads" aria-label="Conversation threads"></div>
+
+            <div class="chat">
+              <div class="chatHead">
+                <div>
+                  <div class="label">Chat</div>
+                  <div class="value" id="chatTitle">Select a conversation</div>
+                </div>
+                <button class="btn small" id="openJobBtn" type="button" disabled>Open job</button>
+              </div>
+
+              <div class="chatBody" id="chatBody" aria-label="Chat messages"></div>
+
+              <form class="chatComposer" id="chatForm">
+                <input id="chatInput" type="text" placeholder="Type a message…" autocomplete="off" />
+                <button class="btn primary" type="submit" id="sendBtn" disabled>Send</button>
+              </form>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="fund">
+          <div class="cardTop">
+            <h2>Fund account</h2>
+            <div class="mutedSmall">Deposit funds, then release payments by milestone.</div>
+          </div>
+
+          <form class="fundBox" id="fundForm" novalidate>
+            <label class="field">
+              Amount (₦)
+              <input name="amount" id="fundAmount" type="number" min="1000" step="1000" placeholder="100000" required />
+            </label>
+
+            <label class="field">
+              Payment method
+              <select name="method" id="fundMethod" required>
+                <option value="">Select</option>
+                <option value="card">Card</option>
+                <option value="transfer">Bank transfer</option>
+              </select>
+            </label>
+
+            <button class="btn primary" type="submit">Fund now</button>
+            <div class="formMsg" id="fundMsg" role="status" aria-live="polite"></div>
+          </form>
+
+          <div class="sectionDivider"></div>
+
+          <div class="cardTop" style="margin-top:8px">
+            <h3 class="h3">Milestone releases</h3>
+            <div class="mutedSmall">Track approvals and payment releases (demo).</div>
+          </div>
+          <div class="list" id="releasesList" aria-label="Milestone releases list"></div>
+        </article>
+
+        <article class="card" id="live">
+          <div class="cardTop">
+            <h2>Live site view</h2>
+            <button class="linkBtn" id="shareLiveBtn" type="button">Share link</button>
+          </div>
+
+          <div class="liveBox">
+            <div class="livePreview" id="livePreview">
+              <div class="mutedSmall">No live feed connected. Start a demo stream to preview.</div>
+            </div>
+
+            <div class="liveActions">
+              <button class="btn" id="startDemoLiveBtn" type="button">Start demo live</button>
+              <button class="btn primary" id="openLiveFullBtn" type="button">Open full view</button>
+            </div>
+
+            <div class="mutedSmall" id="liveMeta">Secure stream · Access controlled</div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <dialog class="modal" id="statusModal" aria-label="Update site project status">
+    <form method="dialog" class="modalCard" id="statusForm">
+      <div class="modalHead">
+        <strong>Update project milestone</strong>
+        <button class="iconBtn" type="button" id="closeStatusModal" aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <label class="field">
+        Status
+        <select name="status" id="statusSelect">
+          <option>Not started</option>
+          <option selected>In progress</option>
+          <option>Blocked</option>
+          <option>Completed</option>
+        </select>
+      </label>
+
+      <label class="field">
+        Progress (%)
+        <input name="progress" id="progressInput" type="number" min="0" max="100" value="62" />
+      </label>
+
+      <label class="field">
+        Update note
+        <textarea name="note" id="noteInput" rows="4" placeholder="What changed since the last update?"></textarea>
+      </label>
+
+      <div class="modalActions">
+        <button class="btn" type="button" id="cancelStatus">Cancel</button>
+        <button class="btn primary" value="confirm">Save update</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="liveModal" aria-label="Live site view">
+    <div class="modalCard">
+      <div class="modalHead">
+        <strong>Live site view</strong>
+        <button class="iconBtn" type="button" id="closeLiveModal" aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="liveModalBody">
+        <div class="liveFrame" id="liveFrame">
+          <div class="mutedSmall">Start demo live to see the preview.</div>
+        </div>
+        <div class="modalActions">
+          <button class="btn" id="startDemoLiveBtn2" type="button">Start demo live</button>
+          <button class="btn primary" id="copyLiveLinkBtn" type="button">Copy share link</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="hireModal" aria-label="Hire talent">
+    <form method="dialog" class="modalCard" id="hireForm">
+      <div class="modalHead">
+        <strong>Hire verified talent</strong>
+        <button class="iconBtn" type="button" id="closeHireModal" aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="mutedSmall" id="hireTalentMeta">Hiring details</div>
+
+      <label class="field">
+        Offer amount (₦)
+        <input name="offer" id="offerAmount" type="number" min="0" step="1000" required />
+      </label>
+
+      <label class="field">
+        Message
+        <textarea name="message" id="hireMessage" rows="4" placeholder="Explain scope, start date, and expectations." required></textarea>
+      </label>
+
+      <div class="modalActions">
+        <button class="btn" type="button" id="cancelHire">Cancel</button>
+        <button class="btn primary" value="confirm">Send hire request</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="timelineModal" aria-label="Project timeline">
+    <div class="modalCard">
+      <div class="modalHead">
+        <strong>Project timeline</strong>
+        <button class="iconBtn" type="button" id="closeTimelineModal" aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="timeline" id="timeline"></div>
+
+      <div class="modalActions">
+        <button class="btn" id="closeTimelineBtn" type="button">Close</button>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
