@@ -1,273 +1,355 @@
 {% extends 'layout.html' %}
 {% block content %}
- 
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="heroContent">
-        <h1 class="heroTitle">Build Your Dream Home in Africa — With Builders You Can Trust</h1>
-        <p class="heroSubtitle">
-          Connect with fully verified builders and artisans, track your project from anywhere in the world,
-          and enjoy secure milestone-based payments that protect your investment.
-        </p>
 
-        <div class="heroButtons">
-          <a href="{{url_for('contact_page')}}" class="primaryButton">Get Started</a>
-          <a href="{{url_for('builders_page')}}" class="secondaryButton">Explore Verified Builders</a>
-        </div>
+<!-- HERO -->
+<section class="hero premiumHero" id="top">
+  <div class="heroContent heroContainer">
 
-        <p class="trustBar">Verified Builders. Secure Payments. Transparent Progress Updates.</p>
-      </div>
-    </section>
+    <!-- LEFT TEXT -->
+    <div class="heroText">
+      <h1 class="heroTitle">
+        Build Your Dream Home in Africa — <span class="highlight">Trustworthy Builders, Zero Stress</span>
+      </h1>
 
-    <!-- Why 47Builders Exists -->
-    <section class="section">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">Why 47Builders Exists</h2>
-        <p class="sectionText">
-          Building from the diaspora shouldn’t be stressful or risky.
-          47Builders gives you a trusted, technology-driven platform to hire verified professionals,
-          manage construction milestones, and ensure every phase of your project is delivered exactly as promised.
-        </p>
-      </div>
-    </section>
+      <p class="heroSubtitle">
+        Hire fully verified builders and artisans, track your project progress in real-time, 
+        and enjoy secure milestone-based payments that protect your investment.
+      </p>
 
-    <!-- How It Works -->
-    <section class="section" id="how-it-works">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">How It Works</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>1. Find Verified Builders</h3>
-            <p>
-              Browse a curated list of vetted builders and artisans, complete with ID verification,
-              past projects, and authentic reviews.
-            </p>
-          </div>
-          <div class="card">
-            <h3>2. Get Transparent Quotes</h3>
-            <p>
-              Submit your project details and receive structured quotes you can compare side-by-side.
-            </p>
-          </div>
-          <div class="card">
-            <h3>3. Track Your Build Remotely</h3>
-            <p>
-              Monitor progress with photo and video reports, milestone updates, and real-time messaging.
-            </p>
-          </div>
-          <div class="card">
-            <h3>4. Pay Securely with Escrow</h3>
-            <p>
-              Your funds are protected and only released after approved milestones, ensuring full accountability.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Diaspora Clients Trust 47Builders -->
-    <section class="section">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">Why Diaspora Clients Trust 47Builders</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Full Verification</h3>
-            <p>
-              Every builder is checked through KYC, NIN/CAC validation, portfolio review, and manual screening.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Zero Guesswork</h3>
-            <p>
-              You get weekly updates, site reports, and clear timelines.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Fraud Resistant System</h3>
-            <p>
-              Your money never goes directly to a builder, it stays secured until the work is done.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Transparent Project Management</h3>
-            <p>
-              Milestones, tasks, and media updates keep you in control from start to finish.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Years of Experience
-            </h3>
-            <p>
-              Our years of Experience in the construction industry gives us an advantage over our compititors
-            </p>
-          </div>
-          <div class="card">
-            <h3>Our Value System</h3>
-            <p>
-              Our values stand us tall amongst compititors. When it comes to quality we remain uncompromised.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- For Builders and Artisans -->
-    <section class="section" id="builders">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">For Builders and Artisans</h2>
-        <p class="sectionText">
-          Earn more, build your reputation, and work with high-value clients around the world.
-        </p>
-        <p class="sectionText">
-          Register, get verified, and start receiving projects from trusted diaspora clients.
-        </p>
-        <a href="{{url_for('artisan_signup_page')}}" class="primaryButton">
-          Become a Verified Builder or Artisan
-        </a>
-      </div>
-    </section>
-
-    <!-- Placeholder for Artisans -->
-    <section class="section" id="artisans">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">Top Artisans</h2>
-        <p class="sectionText">
-          Here is a preview of the type of artisans you will find on 47Builders.
-          These are placeholders, to be replaced with live data from your platform.
-        </p>
-        <div class="grid">
-          <div class="card artisan-card">
-            <div class="avatarPlaceholder">AP</div>
-            <h3>Engineer Charle</h3>
-            <p class="tag">Bricklayer/Mason</p>
-            <p class="meta">Benin, Nigeria</p>
-            <p class="meta">Rating 8.9 1200 jobs completed</p>
-          </div>
-          <div class="card artisan-card">
-            <div class="avatarPlaceholder">AC</div>
-            <h3>Jacob Paul</h3>
-            <p class="tag">Carpenter and Furniture Maker</p>
-            <p class="meta">Abuja, Nigeria</p>
-            <p class="meta">Rating 4.7 850 jobs completed</p>
-          </div>
-          <div class="card artisan-card">
-            <div class="avatarPlaceholder">PL</div>
-            <h3>Thankgod Okoh</h3>
-            <p class="tag">Plumber</p>
-            <p class="meta">Port Harcourt, Nigeria</p>
-            <p class="meta">Rating 4.8 1960 jobs completed</p>
-          </div>
-          <div class="card artisan-card">
-            <div class="avatarPlaceholder">TL</div>
-            <h3>Abayomi Ade</h3>
-            <p class="tag">Tiler and Finishing Expert</p>
-            <p class="meta">Enugu, Nigeria</p>
-            <p class="meta">Rating 5.0 6604 jobs completed</p>
-          </div>
-          <div class="card artisan-card">
-            <div class="avatarPlaceholder">PL</div>
-            <h3>Ella James</h3>
-            <p class="tag">Interio designer</p>
-            <p class="meta">Asaba, Nigeria</p>
-            <p class="meta">Rating 4.8 1960 jobs completed</p>
-          </div>
-          <div class="card artisan-card">
-            <div class="avatarPlaceholder">TL</div>
-            <h3>Favour Osas</h3>
-            <p class="tag">Painting</p>
-            <p class="meta">Enugu, Nigeria</p>
-            <p class="meta">Rating 5.0 6604 jobs completed</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Featured Builders -->
-    <section class="section">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">Meet Our Verified Professionals</h2>
-        <p class="sectionText">
-          From masons and carpenters to electricians, plumbers, and structural engineers,
-          all profiles are verified and rated by real clients.
-        </p>
-        <a href="{{url_for('artisans_page')}}" class="secondaryButton">
-          Browse Builders and Artisans
-        </a>
-      </div>
-    </section>
-
-    <!-- Project Transparency -->
-    <section class="section">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">Construction Progress You Can See</h2>
-        <p class="sectionText">
-          Get photo and video reports, milestone timelines, and direct communication with your builder,
-          all inside one secure dashboard.
-        </p>
-      </div>
-    </section>
-
-    <!-- Escrow and Payments -->
-    <section class="section">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">Secure Payments That Protect Your Investment</h2>
-        <p class="sectionText">
-          Your funds are held safely until each milestone is completed. No surprises, no shortcuts, no fraud.
-        </p>
+      <div class="heroButtons">
         <a href="{{url_for('contact_page')}}" class="primaryButton">
-          Start Your Project Safely
+          <i class="fas fa-hammer"></i>&nbsp; Get Started
+        </a>
+        <a href="{{url_for('builders_page')}}" class="secondaryButton">
+          <i class="fas fa-users"></i>&nbsp; Explore Builders
         </a>
       </div>
-    </section>
 
-    <!-- Testimonials -->
-    <section class="section">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">Real Stories. Real Homes. Real Results.</h2>
-        <div class="testimonial">
-          <p>
-            “I built my home in Lagos without travelling once. 47Builders matched me with a verified builder,
-            and the escrow system gave me complete peace of mind.”
-          </p>
-          <p class="testimonialAuthor">Chinwe, UK Based Client</p>
+      <p class="trustBar">
+        <i class="fas fa-shield-alt"></i> Verified Builders &nbsp;•&nbsp;
+        <i class="fas fa-lock"></i> Secure Payments &nbsp;•&nbsp;
+        <i class="fas fa-chart-line"></i> Transparent Progress
+      </p>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="heroImage">
+      <img src="{{ url_for('static', filename='images/hero-47builders.png') }}"
+        alt="Verified Construction Professional">
+    </div>
+
+  </div>
+</section>
+
+<!-- Why 47Builders Exists -->
+<section class="section premiumMission">
+  <div class="sectionContent center">
+    <h2 class="sectionTitle">Why 47Builders Exists</h2>
+    <p class="sectionText">
+      Building from the diaspora shouldn’t be stressful or risky. 
+      47Builders provides a trusted, technology-driven platform to hire verified professionals, 
+      manage construction milestones, and ensure every phase of your project is delivered exactly as promised.
+    </p>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section premiumSteps">
+  <div class="sectionContent center">
+    <h2 class="sectionTitle">How Diaspora Clients Build Safely with 47Builders</h2>
+
+    <div class="grid">
+
+      <div class="card featureCard premium-card">
+        <div class="iconWrapper premium-icon">
+          <i class="fas fa-user-check"></i>
         </div>
-      </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="section" id="get-started">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">Ready to Build Back Home With Confidence</h2>
-        <div class="heroButtons">
-          <a href="{{url_for('contact_page')}}" class="primaryButton">Get Started</a>
-          <a href="{{url_for('contact_page')}}" class="secondaryButton">Talk to Our Support Team</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">Contact Us</h2>
-        <p class="sectionText">
-          Share your project details and our team will connect you with verified builders and artisans.
+        <h3>1. Find Verified Builders</h3>
+        <p>
+          Browse a curated list of vetted builders and artisans, complete with ID verification,
+          past projects, and authentic reviews.
         </p>
-        <form class="form" id="contactForm">
-          <div class="formRow">
-            <input type="text" name="name" placeholder="Full Name" class="input" required />
-            <input type="email" name="email" placeholder="Email" class="input" required />
-          </div>
-          <div class="formRow">
-            <input type="text" name="country" placeholder="Country of Residence" class="input" />
-            <input type="text" name="location" placeholder="Project Location (City, Country)" class="input" />
-          </div>
-          <textarea name="project" placeholder="Tell us about your project" class="textarea" required></textarea>
-          <button type="submit" class="primaryButton">
-            Submit Project
-          </button>
-          <p class="formMessage" id="formMessage"></p>
-        </form>
       </div>
-    </section>
-  
+
+      <div class="card featureCard premium-card">
+        <div class="iconWrapper premium-icon">
+          <i class="fas fa-file-invoice-dollar"></i>
+        </div>
+        <h3>2. Get Transparent Quotes</h3>
+        <p>
+          Submit your project details and receive structured quotes you can compare side-by-side.
+        </p>
+      </div>
+
+      <div class="card featureCard premium-card">
+        <div class="iconWrapper premium-icon">
+          <i class="fas fa-camera"></i>
+        </div>
+        <h3>3. Track Your Build Remotely</h3>
+        <p>
+          Monitor progress with photo and video reports, milestone updates, and real-time messaging.
+        </p>
+      </div>
+
+      <div class="card featureCard premium-card">
+        <div class="iconWrapper premium-icon">
+          <i class="fas fa-hand-holding-usd"></i>
+        </div>
+        <h3>4. Pay Securely with Escrow</h3>
+        <p>
+          Your funds are protected and only released after approved milestones.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Artisans Preview -->
+<section class="section premium-artisans" id="artisans">
+  <div class="sectionContent">
+    <h2 class="sectionTitle center">Top Artisans</h2>
+
+    <div class="grid">
+
+      <!-- Artisan Card 1 -->
+      <div class="card artisan-card premium-card">
+        <div class="avatar">
+          <img src="{{ url_for('static', filename='images/2.png') }}" alt="Engineer Charles">
+        </div>
+        <h3>Engineer Charles</h3>
+        <p class="tag"><i class="fa-solid fa-hammer"></i> Bricklayer / Mason</p>
+        <p class="meta"><i class="fa-solid fa-location-dot"></i> Benin, Nigeria</p>
+        <p class="meta premium-rating"><i class="fa-solid fa-star"></i> 4.9 • 1200 jobs</p>
+      </div>
+
+      <!-- Artisan Card 2 -->
+      <div class="card artisan-card premium-card">
+        <div class="avatar">
+          <img src="{{ url_for('static', filename='images/1.png') }}" alt="Jacob Paul">
+        </div>
+        <h3>Jacob Paul</h3>
+        <p class="tag"><i class="fa-solid fa-screwdriver-wrench"></i> Carpenter</p>
+        <p class="meta"><i class="fa-solid fa-location-dot"></i> Abuja, Nigeria</p>
+        <p class="meta premium-rating"><i class="fa-solid fa-star"></i> 4.7 • 850 jobs</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Trust Section -->
+<section class="section premiumFeatures">
+  <div class="sectionContent">
+    <h2 class="sectionTitle center">Why Diaspora Clients Trust 47Builders</h2>
+
+    <div class="grid">
+
+      <div class="card featureCard premium-card">
+        <div class="iconWrapper premium-icon">
+          <i class="fa-solid fa-id-card"></i>
+        </div>
+        <h3>Full Verification</h3>
+        <p>KYC, NIN/CAC validation, portfolio checks, and manual screening ensure only the best artisans.</p>
+      </div>
+
+      <div class="card featureCard premium-card">
+        <div class="iconWrapper premium-icon">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+        <h3>Zero Guesswork</h3>
+        <p>Weekly updates, site reports, and clear delivery timelines keep you informed every step of the way.</p>
+      </div>
+
+      <div class="card featureCard premium-card">
+        <div class="iconWrapper premium-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3>Fraud Resistant</h3>
+        <p>Your funds remain protected until each milestone is verified and completed properly.</p>
+      </div>
+
+      <div class="card featureCard premium-card">
+        <div class="iconWrapper premium-icon">
+          <i class="fa-solid fa-diagram-project"></i>
+        </div>
+        <h3>Transparent Management</h3>
+        <p>Milestones, tasks, and updates give you full visibility and control over your project.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Escrow Highlight -->
+<section class="section highlightSection">
+  <div class="sectionContent highlightContainer">
+
+    <!-- LEFT CONTENT -->
+    <div class="highlightText">
+      <h2 class="sectionTitle">
+        Secure Payments That Protect Your Investment
+      </h2>
+
+      <p class="sectionText">
+        Your funds are protected through a structured milestone-based escrow system.
+        Payments are only released when approved — ensuring accountability at every stage.
+      </p>
+
+      <div class="securityFeatures">
+        <div class="securityItem">
+          <i class="fa-solid fa-lock"></i>
+          <span>Escrow Protected Payments</span>
+        </div>
+
+        <div class="securityItem">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Fraud Prevention & Verification</span>
+        </div>
+
+        <div class="securityItem">
+          <i class="fa-solid fa-check-circle"></i>
+          <span>Milestone Approval System</span>
+        </div>
+      </div>
+
+      <a href="{{url_for('contact_page')}}" class="primaryButton">
+        <i class="fa-solid fa-paper-plane"></i>
+        &nbsp; Start Your Project Safely
+      </a>
+    </div>
+
+    <!-- RIGHT VISUAL IMAGE BLOCK -->
+    <div class="highlightVisual">
+      <img src="{{ url_for('static', filename='images/security-shield.png') }}" alt="Secure Payment Shield"
+        class="securityShieldImage">
+    </div>
+
+
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonialSection">
+  <div class="sectionContent center">
+    <h2 class="sectionTitle">Real Stories. Real Homes. Real Results.</h2>
+
+    <div class="carouselWrapper">
+
+      <div class="carouselTrack">
+
+        <!-- Slide 1 -->
+        <div class="carouselSlide">
+          <div class="testimonialCard">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+
+            <p class="testimonialText">
+              I built my home in Lagos without travelling once.
+              The escrow system gave me complete peace of mind.
+            </p>
+
+            <div class="testimonialProfile">
+              <img src="{{ url_for('static', filename='images/1.png') }}">
+              <div>
+                <p class="testimonialAuthor">Chinwe</p>
+                <span class="testimonialLocation">UK Based Client</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carouselSlide">
+          <div class="testimonialCard">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+
+            <p class="testimonialText">
+              Weekly updates, structured milestones and zero stress.
+              It felt like I was physically present at the site.
+            </p>
+
+            <div class="testimonialProfile">
+              <img src="{{ url_for('static', filename='images/2.png') }}">
+              <div>
+                <p class="testimonialAuthor">David</p>
+                <span class="testimonialLocation">Canada</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carouselSlide">
+          <div class="testimonialCard">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+
+            <p class="testimonialText">
+              Transparent pricing and professional builders.
+              I highly recommend 47Builders to the diaspora.
+            </p>
+
+            <div class="testimonialProfile">
+              <img src="{{ url_for('static', filename='images/3.png') }}">
+              <div>
+                <p class="testimonialAuthor">Amina</p>
+                <span class="testimonialLocation">USA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation -->
+      <button class="carouselBtn prevBtn">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <button class="carouselBtn nextBtn">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section center" id="get-started">
+  <div class="sectionContent">
+    <h2 class="sectionTitle">Ready to Build Back Home With Confidence?</h2>
+
+    <div class="heroButtons" style="justify-content:center;">
+      <a href="{{url_for('contact_page')}}" class="primaryButton">
+        <i class="fas fa-paper-plane"></i>&nbsp; Get Started
+      </a>
+
+      <a href="{{url_for('contact_page')}}" class="secondaryButton">
+        <i class="fas fa-headset"></i>&nbsp; Talk to Support
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
 {% endblock content %}
