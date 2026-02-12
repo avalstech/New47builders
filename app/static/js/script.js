@@ -234,6 +234,8 @@ if (artisanSearch) {
 if (artisanLocationFilter) {
   artisanLocationFilter.addEventListener("change", filterArtisans);
 }
+
+
 // Artisan signup form handler (placeholder)
 
 const artisanSignupForm = document.getElementById("artisanSignupForm");

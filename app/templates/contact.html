@@ -1,28 +1,64 @@
 {% extends 'layout.html' %}
 {% block content %}
+
 <!-- Contact Section -->
-<section class="section" id="contact">
-    <div class="sectionContent">
-        <h2 class="sectionTitle">Contact Us</h2>
-        <p class="sectionText">
-            Share your project details and our team will connect you with verified builders and artisans.
-        </p>
-        <form class="form" id="contactForm">
-            <div class="formRow">
-                <input type="text" name="name" placeholder="Full Name" class="input" required />
-                <input type="email" name="email" placeholder="Email" class="input" required />
-            </div>
-            <div class="formRow">
-                <input type="text" name="country" placeholder="Country of Residence" class="input" />
-                <input type="text" name="location" placeholder="Project Location (City, Country)" class="input" />
-            </div>
-            <textarea name="project" placeholder="Tell us about your project" class="textarea" required></textarea>
-            <button type="submit" class="primaryButton">
-                Submit Project
-            </button>
-            <p class="formMessage" id="formMessage"></p>
-        </form>
+<section class="contact-section" id="contact">
+  <div class="contact-container">
+
+    <div class="contact-header">
+      <span class="contact-badge">Start Your Project</span>
+      <h2>Tell Us About Your Construction Project</h2>
+      <p>
+        Share your project details and our team will match you with
+        verified builders and artisans tailored to your needs.
+      </p>
     </div>
+
+    <div class="contact-card">
+      <form class="premium-form">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="John Doe" required>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="john@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Country of Residence</label>
+            <input type="text" name="country" placeholder="United Kingdom">
+          </div>
+
+          <div class="form-group">
+            <label>Project Location</label>
+            <input type="text" name="location" placeholder="Lagos, Nigeria">
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label>Project Details</label>
+          <textarea name="project" rows="5" placeholder="Describe the type of building, timeline, budget range, and any special requirements..." required></textarea>
+        </div>
+
+        <div class="form-footer">
+          <p class="form-note">
+            🔒 Your information is secure and will only be shared with verified professionals.
+          </p>
+          <button type="submit" class="contact-btn">
+            Submit Project Request
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
 </section>
 
 {% endblock content %}
