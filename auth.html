@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0B0F19" />
+
+  <title>47Builders | Login</title>
+  <meta name="description" content="Login or create your 47Builders account." />
+
+  <link rel="stylesheet" href="auth.css" />
+  <script src="auth.js" defer></script>
+</head>
+
+<body>
+  <a class="skipLink" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbarRow">
+      <a class="brand" href="/" aria-label="47Builders Home">
+        <img src="assets/logo.png" alt="47Builders logo" width="38" height="38" />
+        <div class="brandText">
+          <strong>47Builders</strong>
+          <span class="muted">Secure access</span>
+        </div>
+      </a>
+
+      <a class="topLink" href="/" aria-label="Back to home">Back to site</a>
+    </div>
+  </header>
+
+  <main id="main" class="container authWrap" tabindex="-1">
+    <section class="authShell" aria-label="Authentication">
+      <div class="authLeft" aria-hidden="true">
+        <div class="glass">
+          <div class="kicker">Build with confidence</div>
+          <h1>Manage projects, hire verified talent, release payments by milestone.</h1>
+          <p class="muted">
+            One account gives you access to diaspora dashboards, messaging, hiring, and secure live site links.
+          </p>
+
+          <div class="featureGrid">
+            <div class="fItem">
+              <div class="fIcon">✅</div>
+              <div>
+                <div class="fTitle">Verified builders</div>
+                <div class="mutedSmall">Identity checks and portfolio review.</div>
+              </div>
+            </div>
+            <div class="fItem">
+              <div class="fIcon">🔒</div>
+              <div>
+                <div class="fTitle">Secure payouts</div>
+                <div class="mutedSmall">Milestone approvals before release.</div>
+              </div>
+            </div>
+            <div class="fItem">
+              <div class="fIcon">📷</div>
+              <div>
+                <div class="fTitle">Remote oversight</div>
+                <div class="mutedSmall">Live links and progress evidence.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mutedSmall finePrint">
+            By continuing, you agree to our Terms and Privacy Policy.
+          </div>
+        </div>
+      </div>
+
+      <div class="authCard">
+        <div class="authTop">
+          <div>
+            <div class="label">Account</div>
+            <div class="title" id="authTitle">Welcome back</div>
+            <div class="mutedSmall" id="authSub">Login to continue to your dashboard.</div>
+          </div>
+
+          <div class="seg" role="tablist" aria-label="Auth mode">
+            <button class="segBtn active" type="button" role="tab" aria-selected="true" id="tabLogin">
+              Login
+            </button>
+            <button class="segBtn" type="button" role="tab" aria-selected="false" id="tabSignup">
+              Sign up
+            </button>
+          </div>
+        </div>
+
+        <div class="socialRow" aria-label="Social sign in">
+          <button class="btn social" type="button" id="googleBtn">Continue with Google</button>
+          <button class="btn social" type="button" id="appleBtn">Continue with Apple</button>
+        </div>
+
+        <div class="divider">
+          <span class="mutedSmall">or</span>
+        </div>
+
+        <form class="form" id="authForm" novalidate>
+          <div class="twoCols" id="nameRow" hidden>
+            <label class="field">
+              First name
+              <input id="firstName" name="firstName" type="text" autocomplete="given-name" placeholder="Victor" />
+            </label>
+            <label class="field">
+              Last name
+              <input id="lastName" name="lastName" type="text" autocomplete="family-name" placeholder="Anene" />
+            </label>
+          </div>
+
+          <label class="field">
+            Email
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required />
+          </label>
+
+          <label class="field">
+            Password
+            <div class="passRow">
+              <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required />
+              <button class="iconBtnSm" type="button" id="togglePass" aria-label="Show password">👁️</button>
+            </div>
+            <div class="mutedSmall" id="passHint">Use at least 8 characters.</div>
+          </label>
+
+          <label class="field" id="confirmRow" hidden>
+            Confirm password
+            <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" placeholder="••••••••" />
+          </label>
+
+          <div class="rowBetween">
+            <label class="check">
+              <input id="remember" type="checkbox" />
+              <span>Remember me</span>
+            </label>
+
+            <button class="linkBtn" type="button" id="forgotBtn">Forgot password?</button>
+          </div>
+
+          <button class="btn primary full" type="submit" id="submitBtn">Login</button>
+
+          <div class="formMsg" id="authMsg" role="status" aria-live="polite"></div>
+        </form>
+
+        <div class="bottomNote">
+          <span class="mutedSmall" id="switchNote">New here?</span>
+          <button class="linkBtn" type="button" id="switchBtn">Create an account</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <dialog class="modal" id="forgotModal" aria-label="Reset password">
+    <form method="dialog" class="modalCard" id="forgotForm">
+      <div class="modalHead">
+        <strong>Reset password</strong>
+        <button class="iconBtn" type="button" id="closeForgot" aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <label class="field">
+        Email address
+        <input id="forgotEmail" type="email" placeholder="you@company.com" required />
+      </label>
+
+      <div class="modalActions">
+        <button class="btn" type="button" id="cancelForgot">Cancel</button>
+        <button class="btn primary" value="confirm">Send reset link</button>
+      </div>
+
+      <div class="formMsg" id="forgotMsg" role="status" aria-live="polite"></div>
+    </form>
+  </dialog>
+</body>
+</html>
