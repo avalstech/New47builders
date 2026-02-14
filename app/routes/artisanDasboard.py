@@ -7,6 +7,14 @@ from app.models.user_model import Artisan
 
 
 @app.route("/artisan-dashboard")
+@login_required
 def artisan_dashboard_page():
+    return render_template('artisan-dashboard.html', artisan=current_user)
+
+
+
+
+@app.route("/artisan-profile")
+def artisan_profile_page():
     artisan = Artisan.query.filter_by(id=current_user.id).first()
-    return render_template("artisan-dashboard.html", artisan=artisan)
+    return render_template("artisan-profile.html", artisan=artisan)

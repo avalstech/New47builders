@@ -1,0 +1,127 @@
+{% extends 'artisanDasboardLayout.html' %}
+{% block content %}
+
+<div style="display: flex; justify-content: center; margin-top: 40px;">
+    {% include 'msgFlash.html' %}
+</div>
+
+<section class="pageHead" id="personal">
+    <div>
+        <h1>Profile</h1>
+        <p class="muted">Manage your personal info, skills, projects, and account settings.</p>
+    </div>
+    <div class="headActions">
+        <button class="btn" id="editProfileBtn" type="button">Edit Profile</button>
+    </div>
+</section>
+
+<section class="grid">
+    <!-- PERSONAL INFO CARD -->
+    <article class="card">
+        <div class="cardTop">
+            <h2>Personal Information</h2>
+            <button class="linkBtn" id="editPersonalBtn" type="button">Edit</button>
+        </div>
+        <div class="infoBox">
+            <div class="infoRow">
+                <div>
+                    <div class="label">Full Name</div>
+                    <div class="value">{{ artisan.firstName }} {{ artisan.lastName }}</div>
+                </div>
+                <div>
+                    <div class="label">Email</div>
+                    <div class="value">{{ artisan.email }}</div>
+                </div>
+            </div>
+
+            <div class="infoRow">
+                <div>
+                    <div class="label">Phone</div>
+                    <div class="value">{{ artisan.phone }}</div>
+                </div>
+                <div>
+                    <div class="label">City</div>
+                    <div class="value">{{ artisan.city }}</div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- SKILLS CARD -->
+    <article class="card">
+        <div class="cardTop">
+            <h2>Skills</h2>
+            <button class="linkBtn" id="editSkillsBtn" type="button">Edit</button>
+        </div>
+        <div class="skillsBox">
+            {% if artisan.skills %}
+            <ul>
+                {% for skill in artisan.skills %}
+                <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="muted">No skills added yet.</p>
+            {% endif %}
+        </div>
+    </article>
+
+    <!-- PROJECTS CARD -->
+    <article class="card">
+        <div class="cardTop">
+            <h2>Projects</h2>
+            <button class="linkBtn" id="editProjectsBtn" type="button">Manage</button>
+        </div>
+        <div class="projectsBox">
+            {% if artisan.projects %}
+            {% for proj in artisan.projects %}
+            <div class="projRow">
+                <div>
+                    <div class="label">Project</div>
+                    <div class="value">{{ proj.name }}</div>
+                </div>
+                <div>
+                    <div class="label">Role</div>
+                    <div class="value">{{ proj.role }}</div>
+                </div>
+                <div>
+                    <div class="label">Status</div>
+                    <div class="statusPill">{{ proj.status }}</div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p class="muted">No projects yet.</p>
+            {% endif %}
+        </div>
+    </article>
+
+    <!-- ACCOUNT SETTINGS CARD -->
+    <article class="card">
+        <div class="cardTop">
+            <h2>Account Settings</h2>
+            <button class="linkBtn" id="editSettingsBtn" type="button">Edit</button>
+        </div>
+        <div class="settingsBox">
+            <div class="infoRow">
+                <div>
+                    <div class="label">Username</div>
+                    <div class="value">{{ artisan.username }}</div>
+                </div>
+                <div>
+                    <div class="label">Password</div>
+                    <div class="value">********</div>
+                </div>
+            </div>
+
+            <div class="infoRow">
+                <div>
+                    <div class="label">Notification Preference</div>
+                    <div class="value">{{ artisan.notify_pref }}</div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+
+{% endblock content %}

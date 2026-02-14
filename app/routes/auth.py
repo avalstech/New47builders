@@ -87,8 +87,8 @@ def artisan_signup_page():
         db.session.add(artisanData)
         db.session.commit()
 
-        flash("Account created successfully!", "success")
-        return redirect(url_for('artisan_dashboard_page'))
+        flash("Account created successfully, Please login....", "success")
+        return redirect(url_for('artisan_login_page'))
     
     return render_template("artisan-signup.html")
 
@@ -122,8 +122,6 @@ def artisan_login_page():
             flash('No account found with that email', 'danger')
 
     return render_template("artisan-login.html")
-
-
 
 
 @app.route('/logout')
