@@ -446,7 +446,7 @@ body {
 }
 
 
-.navbar {
+.navbar-home{
   width: 100%;
   background: #020617;
   border-bottom: 1px solid #111827;
@@ -989,6 +989,7 @@ body {
 }
 
 .premiumFeatures h3 {
+  color: #fff;
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
 }
@@ -1485,6 +1486,7 @@ body {
     }
 
     .artisan-card h3 {
+      color: #f8fafc;
       font-size: 1.2rem;
       margin-bottom: 6px;
     }

@@ -1,15 +1,16 @@
 <!doctype html>
 <html lang="en-GB">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0B0F19" />
 
   <title>47Builders | Artisan Dashboard</title>
-  <meta name="description" content="Artisan dashboard for project status, job search, invites, messages, location availability, and account balance." />
+  <meta name="description"
+    content="Artisan dashboard for project status, job search, invites, messages, location availability, and account balance." />
 
-  <link rel="stylesheet" href="artisan-dashboard.css" />
-  <script src="artisan-dashboard.js" defer></script>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/artisan-dashboard.css')}}" />
 </head>
 
 <body>
@@ -18,7 +19,7 @@
   <header class="topbar" data-elevate>
     <div class="container topbarRow">
       <a class="brand" href="/" aria-label="47Builders Home">
-        <img src="assets/logo.png" alt="47Builders logo" width="38" height="38" />
+        <img src="{{url_for('static', filename='images/logo47builders.png')}}" alt="47Builders logo" width="130" height="50" />
         <div class="brandText">
           <strong>47Builders</strong>
           <span class="muted">Artisan Dashboard</span>
@@ -40,7 +41,7 @@
         <button class="userChip" id="userMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
           <span class="avatar" aria-hidden="true">A</span>
           <span class="userMeta">
-            <span class="userName" id="userName">Artisan</span>
+            <span class="userName" id="">{{artisan.firstName}} {{artisan.lastName}}</span>
             <span class="userRole">Verified</span>
           </span>
           <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
@@ -51,11 +52,15 @@
         <div class="menu" id="userMenu" role="menu" aria-label="User menu" hidden>
           <button role="menuitem" type="button" id="menuProfile">Profile</button>
           <button role="menuitem" type="button" id="menuSettings">Settings</button>
-          <button role="menuitem" type="button" id="menuLogout">Log out</button>
+          <button role="menuitem" type="button" id="menuLogout"><a href="{{url_for('logout')}}">Log out</a></button>
         </div>
       </div>
     </div>
   </header>
+
+  <div style="display: flex; justify-content: center; margin-top: 40px;">
+  {% include 'msgFlash.html' %}
+</div>
 
   <div class="shell">
     <aside class="sidebar" aria-label="Sidebar navigation">
@@ -246,7 +251,8 @@
           <div class="cardTop">
             <h2>Messages</h2>
             <div class="cardTopRight">
-              <input class="search" id="messageSearch" type="search" placeholder="Search messages" aria-label="Search messages" />
+              <input class="search" id="messageSearch" type="search" placeholder="Search messages"
+                aria-label="Search messages" />
               <button class="btn small" id="newMsgBtn" type="button">New message</button>
             </div>
           </div>
@@ -283,7 +289,9 @@
       <div class="modalHead">
         <strong>Update project status</strong>
         <button class="iconBtn" type="button" id="closeStatusModal" aria-label="Close">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
@@ -313,5 +321,9 @@
       </div>
     </form>
   </dialog>
+
+  <script src="{{url_for('static', filename='js/artisan-dashboard.js')}}" defer></script>
+
 </body>
+
 </html>

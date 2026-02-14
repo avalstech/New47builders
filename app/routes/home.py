@@ -21,7 +21,3 @@ def artisans_page():
 @app.route("/contact")
 def contact_page():
     return render_template("contact.html")
-
-@app.route("/start-project")
-def start_project_page():
-    return render_template("start-project.html")
