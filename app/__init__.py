@@ -10,11 +10,10 @@ load_dotenv()
 
 app = Flask(__name__) 
 
-# app.config["SECRET_KEY"] = os.environ.get(["SECRET_KEY", "3456789olr6789ijhy78ikmnyokgyui"])
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(["DB_URI", "sqlite:///47builder.db" ])
 app.config["SECRET_KEY"] = "3456789olr6789ijhy78ikmnyokgyui"
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///47builder.db"
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:test123@localhost:5432/47builderDB"
+# app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:test123@localhost:5432/47builderDB"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:test123@16.171.255.116:5432/47builderDB"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 bcrypt = Bcrypt(app)
