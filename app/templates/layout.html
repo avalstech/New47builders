@@ -7,18 +7,27 @@
   <meta charset="UTF-8" />
   <title>47Builders | Build Your Dream Home in Africa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Build your dream home in Africa with verified builders and artisans, transparent project tracking, and secure milestone-based payments.">
+  <link rel="icon" href="{{url_for('static', filename='images/favicon47builders.png')}}" type="image/x-icon" />
+  <meta name="description"
+    content="Build your dream home in Africa with verified builders and artisans, transparent project tracking, and secure milestone-based payments.">
   <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap JS Bundle (Required for alerts, modals, dropdowns) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body>
 
   <!-- NAVIGATION BAR -->
-  <header class="navbar">
+  <header class="navbar-home">
     <div class="nav-container">
       <div class="nav-left">
-        <div class="logo" <a href=" index.html">
-          <img src="{{url_for('static', filename='images/logo47builders.png')}}" alt="47builders">
+        <div class="logo">
+          <a href="{{url_for('landing_page')}}">
+            <img src="{{url_for('static', filename='images/logo47builders.png')}}" alt="47builders">
           </a>
         </div>
       </div>
@@ -26,52 +35,72 @@
       <nav class="nav-links" id="navLinks">
         <a href="{{url_for('landing_page')}}">Home</a>
         <a href="{{url_for('how_it_works_page')}}">How It Works</a>
-        <a href="{{url_for('builders_page')}}">Builders</a>
         <a href="{{url_for('artisans_page')}}">Artisans</a>
         <a href="{{url_for('contact_page')}}">Contact</a>
-        <a href="{{url_for('start_project_page')}}" class="nav-cta">Start Project</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{url_for('artisan_dashboard_page')}}" class="nav-cta">Artisan Dashboard</a>
+        {% else %}
+        <a href="{{url_for('artisan_login_page')}}" class="nav-cta">Artisan Sign-In</a>
+        {% endif %}
       </nav>
 
-      <button class="nav-toggle" id="navToggle">☰</button>
+      <button class="nav-toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
-<main class="main">
-  {% block content %}
-   {% endblock content %}
-   <footer class="footer">
+  <main class="main">
+    {% block content %}
+    {% endblock content %}
+    <footer class="footer premiumFooter">
       <div class="footerContent">
-        <p>
+
+        <!-- Description -->
+        <p class="footerDesc">
           47Builders helps Africans in the diaspora build safely, transparently, and confidently.
           Verified builders. Secured payments. Trusted construction.
         </p>
+
+        <!-- Navigation Links -->
         <nav class="footerNav">
           <a href="{{url_for('how_it_works_page')}}">How It Works</a>
-          <a href="{{url_for('builders_page')}}">Builders</a>
           <a href="{{url_for('artisans_page')}}">Artisans</a>
           <a href="{{url_for('contact_page')}}">Contact</a>
-          <a href="{{url_for('contact_page')}}">Support</a>
-          <a href="#top">Back to top</a>
-          <div class="icons-hover-black">
-            <a href="https://web.facebook.com/Mjsflo/" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fa fa-youtube"></i></a>
-            <a href="#" aria-label="Dribbble"><i class="fa fa-dribbble"></i></a>
-            <a href="https://www.linkedin.com/company/mjsflo/" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-          </div>
+          <a href="#top">Back to Top</a>
+        </nav>
+
+        <!-- Social Icons -->
+        <div class="footerSocials">
+          <a href="https://web.facebook.com/Mjsflo/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/profile" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/profile" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.linkedin.com/company/mjsflo/" aria-label="LinkedIn"><i
+              class="fab fa-linkedin-in"></i></a>
+        </div>
+
+
+        <p class="footerCopyright">
+          &copy; 2026 47Builders. All rights reserved.
+        </p>
 
       </div>
     </footer>
-</main>
+
+  </main>
   <!-- Floating WhatsApp Button -->
   <a href="https://wa.me/2348012345678?text=Hi%2047Builders%2C%20I%20want%20to%20start%20a%20project."
     class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-    <span class="wa-icon">WA</span>
+    <i class="fab fa-whatsapp"></i>
   </a>
+
 
   <!-- AI Chatbot Placeholder -->
   <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open 47Builders AI Assistant">
-    AI
+    <i class="fas fa-robot"></i>
   </button>
+
 
   <div class="chatbot-widget" id="chatbotWidget" aria-hidden="true">
     <div class="chatbot-header">

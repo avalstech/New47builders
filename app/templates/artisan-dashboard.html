@@ -1,0 +1,176 @@
+{% extends 'artisanDasboardLayout.html' %}
+{% block content %}
+
+<div style="display: flex; justify-content: center; margin-top: 40px;">
+  {% include 'msgFlash.html' %}
+</div>
+
+ 
+      <section class="pageHead" id="overview">
+        <div>
+          <h1>Dashboard</h1>
+          <p class="muted">Manage your jobs, invites, messages, location availability, and wallet.</p>
+        </div>
+
+        <div class="headActions">
+          <button class="btn" id="refreshBtn" type="button">Refresh</button>
+          <button class="btn primary" id="findJobsBtn" type="button">Find jobs</button>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <div class="cardTop">
+            <h2>Current project status</h2>
+            <button class="linkBtn" id="editProjectBtn" type="button">Edit</button>
+          </div>
+
+          <div class="projectBox">
+            <div class="projRow">
+              <div>
+                <div class="label">Project</div>
+                <div class="value" id="projName">Lekki Duplex Renovation</div>
+              </div>
+              <div>
+                <div class="label">Role</div>
+                <div class="value" id="projRole">Tiling and Finishing</div>
+              </div>
+            </div>
+
+            <div class="projRow">
+              <div>
+                <div class="label">Milestone</div>
+                <div class="value" id="projMilestone">Floor tiling (Phase 2)</div>
+              </div>
+              <div>
+                <div class="label">Status</div>
+                <div class="statusPill" id="projStatus">In progress</div>
+              </div>
+            </div>
+
+            <div class="progWrap" aria-label="Milestone progress">
+              <div class="progBar" id="projBar" style="width: 62%"></div>
+            </div>
+
+            <div class="projFoot">
+              <div class="mutedSmall" id="projMeta">Due in 6 days · Last update: today</div>
+              <button class="btn small" id="postUpdateBtn" type="button">Post update</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cardTop">
+            <h2>Account balance</h2>
+            <button class="linkBtn" id="withdrawBtn" type="button">Withdraw</button>
+          </div>
+
+          <div class="walletBox">
+            <div class="walletMain">
+              <div class="walletAmt" id="walletBalance">₦250,000</div>
+              <div class="mutedSmall">Available balance</div>
+            </div>
+
+            <div class="walletGrid">
+              <div class="mini">
+                <div class="label">Pending</div>
+                <div class="value" id="walletPending">₦90,000</div>
+              </div>
+              <div class="mini">
+                <div class="label">This month</div>
+                <div class="value" id="walletMonth">₦410,000</div>
+              </div>
+            </div>
+
+            <button class="btn primary" id="viewWalletBtn" type="button">View wallet</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cardTop">
+            <h2>Job search</h2>
+            <button class="linkBtn" id="saveFiltersBtn" type="button">Save filters</button>
+          </div>
+
+          <form class="filters" id="jobSearchForm">
+            <label class="field">
+              Skill
+              <select name="skill" id="skillSelect">
+                <option value="all">All</option>
+                <option value="masonry">Masonry</option>
+                <option value="tiling" selected>Tiling</option>
+                <option value="carpentry">Carpentry</option>
+                <option value="plumbing">Plumbing</option>
+                <option value="electrical">Electrical</option>
+                <option value="painting">Painting</option>
+              </select>
+            </label>
+
+            <label class="field">
+              City
+              <select name="city" id="citySelect">
+                <option value="lagos" selected>Lagos</option>
+                <option value="benin">Benin City</option>
+                <option value="ph">Port Harcourt</option>
+              </select>
+            </label>
+
+            <label class="field">
+              Budget
+              <select name="budget" id="budgetSelect">
+                <option value="all">Any</option>
+                <option value="low">₦50k to ₦150k</option>
+                <option value="mid" selected>₦150k to ₦500k</option>
+                <option value="high">₦500k+</option>
+              </select>
+            </label>
+
+            <button class="btn primary" type="submit">Search jobs</button>
+          </form>
+
+          <div class="list" id="jobsList" aria-label="Search results"></div>
+        </article>
+
+        <article class="card">
+          <div class="cardTop">
+            <h2>Job invites</h2>
+            <button class="linkBtn" id="markInvitesReadBtn" type="button">Mark all read</button>
+          </div>
+
+          <div class="list" id="invitesList" aria-label="Invites list"></div>
+        </article>
+
+        <article class="card full">
+          <div class="cardTop">
+            <h2>Messages</h2>
+            <div class="cardTopRight">
+              <input class="search" id="messageSearch" type="search" placeholder="Search messages"
+                aria-label="Search messages" />
+              <button class="btn small" id="newMsgBtn" type="button">New message</button>
+            </div>
+          </div>
+
+          <div class="messages">
+            <div class="threads" id="threads" aria-label="Conversation threads"></div>
+
+            <div class="chat">
+              <div class="chatHead">
+                <div>
+                  <div class="label">Chat</div>
+                  <div class="value" id="chatTitle">Select a conversation</div>
+                </div>
+                <button class="btn small" id="openJobBtn" type="button" disabled>Open job</button>
+              </div>
+
+              <div class="chatBody" id="chatBody" aria-label="Chat messages"></div>
+
+              <form class="chatComposer" id="chatForm">
+                <input id="chatInput" type="text" placeholder="Type a message…" autocomplete="off" />
+                <button class="btn primary" type="submit" id="sendBtn" disabled>Send</button>
+              </form>
+            </div>
+          </div>
+        </article>
+      </section>
+
+    {% endblock content %}

@@ -1,37 +1,123 @@
 {% extends 'layout.html' %}
 {% block content %}
 
- <!-- How It Works -->
-<section class="section" id="how-it-works">
-    <div class="sectionContent">
-        <h2 class="sectionTitle">How It Works</h2>
+<!-- Hero -->
+<section class="artisan-hero">
+    <div class="hero-inner">
+        <span class="hero-badge">How 47Builders Works</span>
+        <h1>How Diaspora Clients Build Safely with 47Builders</h1>
+        <p>
+            Hire fully verified builders and artisans, track your project progress in real-time, and enjoy secure
+            milestone-based payments that protect your investment.
+        </p>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="section premiumSteps">
+    <div class="sectionContent center">
+        <h2 class="sectionTitle"></h2>
+
         <div class="grid">
-            <div class="card">
-                <h3>1. Find Verified Builders</h3>
-                <p>
-                    Browse a curated list of vetted builders and artisans, complete with ID verification,
-                    past projects, and authentic reviews.
-                </p>
-            </div>
-            <div class="card">
-                <h3>2. Get Transparent Quotes</h3>
-                <p>
-                    Submit your project details and receive structured quotes you can compare side-by-side.
-                </p>
-            </div>
-            <div class="card">
-                <h3>3. Track Your Build Remotely</h3>
-                <p>
-                    Monitor progress with photo and video reports, milestone updates, and real-time messaging.
-                </p>
-            </div>
-            <div class="card">
-                <h3>4. Pay Securely with Escrow</h3>
-                <p>
-                    Your funds are protected and only released after approved milestones, ensuring full accountability.
-                </p>
-            </div>
+
+            <a style="text-decoration-line: none;" href="{{url_for('artisans_page')}}">
+                <div class="card featureCard premium-card">
+                    <div class="iconWrapper premium-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>1. Find Verified Builders</h3>
+                    <p>
+                        Browse a curated list of vetted builders and artisans, complete with ID verification,
+                        past projects, and authentic reviews.
+                    </p>
+                </div>
+            </a>
+
+            <a style="text-decoration-line: none;" href="{{url_for('contact_page')}}">
+                <div class="card featureCard premium-card">
+                    <div class="iconWrapper premium-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>2. Get Transparent Quotes</h3>
+                    <p>
+                        Submit your project details and receive structured quotes you can compare side-by-side.
+                    </p>
+                </div>
+            </a>
+
+            <a style="text-decoration-line: none;" href="{{url_for('contact_page')}}">
+                <div class="card featureCard premium-card">
+                    <div class="iconWrapper premium-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>3. Track Your Build Remotely</h3>
+                    <p>
+                        Monitor progress with photo and video reports, milestone updates, and real-time messaging.
+                    </p>
+                </div>
+            </a>
+
+            <a style="text-decoration-line: none;" href="{{url_for('contact_page')}}">
+                <div class="card featureCard premium-card">
+                    <div class="iconWrapper premium-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>4. Pay Securely with Escrow</h3>
+                    <p>
+                        Your funds are protected and only released after approved milestones.
+                    </p>
+                </div>
+            </a>
+
         </div>
+    </div>
+</section>
+
+<!-- Escrow Highlight -->
+<section class="section highlightSection">
+    <div class="sectionContent highlightContainer">
+
+        <!-- LEFT CONTENT -->
+        <div class="highlightText">
+            <h2 class="sectionTitle">
+                Secure Payments That Protect Your Investment
+            </h2>
+
+            <p class="sectionText">
+                Your funds are protected through a structured milestone-based escrow system.
+                Payments are only released when approved — ensuring accountability at every stage.
+            </p>
+
+            <div class="securityFeatures">
+                <div class="securityItem">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Escrow Protected Payments</span>
+                </div>
+
+                <div class="securityItem">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Fraud Prevention & Verification</span>
+                </div>
+
+                <div class="securityItem">
+                    <i class="fa-solid fa-check-circle"></i>
+                    <span>Milestone Approval System</span>
+                </div>
+            </div>
+
+            <a href="{{url_for('contact_page')}}" class="primaryButton">
+                <i class="fa-solid fa-paper-plane"></i>
+                &nbsp; Start Your Project Safely
+            </a>
+        </div>
+
+        <!-- RIGHT VISUAL IMAGE BLOCK -->
+        <div class="highlightVisual">
+            <img src="{{ url_for('static', filename='images/security-shield.png') }}" alt="Secure Payment Shield"
+                class="securityShieldImage">
+        </div>
+
+
     </div>
 </section>
 

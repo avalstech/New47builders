@@ -90,21 +90,63 @@ if (chatbotForm && chatbotInput && chatbotBody) {
   });
 }
 // MOBILE NAV TOGGLE
-const navToggle = document.getElementById("navToggle");
-const navLinks = document.getElementById("navLinks");
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+const navIcon = navToggle.querySelector('i');
 
-if (navToggle && navLinks) {
-  navToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+
+  // Toggle icon
+  if (navLinks.classList.contains('active')) {
+    navIcon.classList.remove('fa-bars');
+    navIcon.classList.add('fa-xmark'); // Font Awesome "X" icon
+  } else {
+    navIcon.classList.remove('fa-xmark');
+    navIcon.classList.add('fa-bars');
+  }
+});
+
+// active link highlighting
+const activeNavLinks = document.querySelectorAll('.nav-links a');
+
+activeNavLinks.forEach(link => {
+  if (link.href === window.location.href) {
+    link.classList.add('active');
+  } else {
+    link.classList.remove('active');
+  }
+});
+
+// testimonial carousel logic
+const track = document.querySelector('.carouselTrack');
+const slides = document.querySelectorAll('.carouselSlide');
+const nextBtn = document.querySelector('.nextBtn');
+const prevBtn = document.querySelector('.prevBtn');
+
+let index = 0;
+
+function updateCarousel() {
+  track.style.transform = `translateX(-${index * 100}%)`;
 }
 
-// Close nav when clicking a link (mobile)
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-  });
+nextBtn.addEventListener('click', () => {
+  index = (index + 1) % slides.length;
+  updateCarousel();
 });
+
+prevBtn.addEventListener('click', () => {
+  index = (index - 1 + slides.length) % slides.length;
+  updateCarousel();
+});
+
+// Auto slide
+setInterval(() => {
+  index = (index + 1) % slides.length;
+  updateCarousel();
+}, 5000);
+
+
 // ----- ARTISANS DIRECTORY (150 PROFILES + SCROLLING) -----
 
 const artisanGrid = document.getElementById("artisanGrid");
@@ -192,6 +234,8 @@ if (artisanSearch) {
 if (artisanLocationFilter) {
   artisanLocationFilter.addEventListener("change", filterArtisans);
 }
+
+
 // Artisan signup form handler (placeholder)
 
 const artisanSignupForm = document.getElementById("artisanSignupForm");
@@ -208,3 +252,4 @@ if (artisanSignupForm && artisanSignupMessage) {
     artisanSignupForm.reset();
   });
 }
+

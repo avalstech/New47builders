@@ -1,48 +1,105 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-  <main class="main" style="padding-top:80px">
+<main class="artisan-page">
 
-    <!-- PAGE HERO -->
-    <section class="artisan-hero">
-      <h1>Verified Artisans Ready to Work</h1>
-      <p>Browse over 150 trusted electricians, carpenters, plumbers, tilers, and finishing experts across Nigeria.</p>
+  <!-- HERO -->
+  <section class="artisan-hero">
+    <div class="hero-inner">
+      <span class="hero-badge">47Builders Verified Network</span>
+      <h1>Meet Our Verified Professionals</h1>
+      <p>
+        Browse identity-verified electricians, plumbers, carpenters,
+        tilers and finishing specialists trusted by diaspora homeowners.
+      </p>
+    </div>
+  </section>
 
-      <div class="search-row">
-        <input type="text" id="artisanSearch" placeholder="Search artisans by skill or name..." class="search-input" />
-        <select class="search-filter" id="artisanLocationFilter">
-          <option value="">Filter by Location</option>
-          <option value="Lagos">Lagos</option>
-          <option value="Abuja">Abuja</option>
-          <option value="Port Harcourt">Port Harcourt</option>
-          <option value="Enugu">Enugu</option>
-          <option value="Owerri">Owerri</option>
-          <option value="Benin City">Benin City</option>
-          <option value="Kano">Kano</option>
-        </select>
-        <button class="primaryButton" id="artisanSearchBtn">Search</button>
+  <!-- DIRECTORY -->
+  <section class="section">
+    <div class="sectionContent">
+      <h2 class="sectionTitle">Available Artisans</h2>
+
+      <div class="artisan-grid">
+        {% if artisan is none %}
+        <!-- Artisan Card 2 -->
+        <div class="card artisan-card premium-card">
+          <h3>No Featured Artisan Yet</h3>
+        </div>
+
+        {% else %}
+        {% for a in artisan %}
+
+        <!-- CARD 1 -->
+        <div class="artisan-card">
+          <img class="avatar" src="{{ url_for('static', filename='artisan/profile_pics/' + a.profile_img) }}" alt="">
+          <h3>{{a.lastName}} {{a.firstName}}</h3>
+          <p class="skill">{{a.primaryTrade}}</p>
+          <p class="location">{{a.location}}, Nigeria</p>
+          <p class="jobs">Years of Experience • {{a.experienceYears}}.0</p>
+          <!-- <div class="rating">★★★★★ <span>(4.9)</span></div> -->
+          <!-- <div class="badges">
+            <span>ID Verified</span>
+            <span>Licensed</span>
+          </div> -->
+          <div class="card-actions">
+            <a href="#" class="btn-outline">View Profile</a>
+            <a href="#" class="btn-primary">Hire</a>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
       </div>
-    </section>
 
-    <!-- SCROLLING ARTISANS DIRECTORY -->
-    <section class="section">
-      <div class="sectionContent">
-        <h2 class="sectionTitle">Available Artisans</h2>
+      <p class="directory-note">
+        {{count}}+ actively available artisans across Nigeria. Updated weekly.
+      </p>
+    </div>
+  </section>
 
-        <!-- Scrollable container -->
-        <div class="artisan-scroll-container">
-          <div class="artisan-grid" id="artisanGrid">
-            <!-- 150 artisan cards will be injected here by script.js -->
+  <!-- For Builders and Artisans -->
+  <section class="partner-section" id="builders">
+    <div class="partner-container">
+
+      <div class="partner-content">
+        <span class="partner-badge">Join the 47Builders Network</span>
+
+        <h2>For Builders & Skilled Artisans</h2>
+
+        <p class="lead-text">
+          Earn more. Build your professional reputation. Work with serious,
+          high-value diaspora clients across the globe.
+        </p>
+
+        <p class="sub-text">
+          Get verified, showcase your expertise, receive structured projects,
+          and enjoy milestone-based secure payments through our escrow system.
+        </p>
+
+        <div class="partner-benefits">
+          <div class="benefit-item">
+            <span>✔</span> Access to international clients
+          </div>
+          <div class="benefit-item">
+            <span>✔</span> Escrow-secured payments
+          </div>
+          <div class="benefit-item">
+            <span>✔</span> Verified professional badge
+          </div>
+          <div class="benefit-item">
+            <span>✔</span> Long-term project opportunities
           </div>
         </div>
 
-        <!-- Simple note instead of pagination -->
-        <p class="sectionText" style="margin-top:1.5rem; font-size:0.9rem; color:#9ca3af;">
-          47Builders best 150 Artisans in Nigeria rightnow.
-        </p>
+        <a href="{{url_for('artisan_signup_page')}}" class="partner-cta">
+          Become a Verified Builder or Artisan
+        </a>
       </div>
-    </section>
 
-  </main>
+    </div>
+  </section>
+
+
+</main>
 
 {% endblock content %}
