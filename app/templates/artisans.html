@@ -2,7 +2,7 @@
 {% block content %}
 
 <main class="artisan-page">
-  
+
   <!-- HERO -->
   <section class="artisan-hero">
     <div class="hero-inner">
@@ -21,15 +21,23 @@
       <h2 class="sectionTitle">Available Artisans</h2>
 
       <div class="artisan-grid">
+        {% if artisan is none %}
+        <!-- Artisan Card 2 -->
+        <div class="card artisan-card premium-card">
+          <h3>No Featured Artisan Yet</h3>
+        </div>
+
+        {% else %}
+        {% for a in artisan %}
 
         <!-- CARD 1 -->
         <div class="artisan-card">
-          <img class="avatar" src="{{url_for('static', filename='images/2.png')}}" alt="">
-          <h3>Chinedu Okafor</h3>
-          <p class="skill">Master Electrician</p>
-          <p class="location">Lagos, Nigeria</p>
-          <p class="jobs">Completed 128 Projects</p>
-          <div class="rating">★★★★★ <span>(4.9)</span></div>
+          <img class="avatar" src="{{ url_for('static', filename='artisan/profile_pics/' + a.profile_img) }}" alt="">
+          <h3>{{a.lastName}} {{a.firstName}}</h3>
+          <p class="skill">{{a.primaryTrade}}</p>
+          <p class="location">{{a.location}}, Nigeria</p>
+          <p class="jobs">Years of Experience • {{a.experienceYears}}.0</p>
+          <!-- <div class="rating">★★★★★ <span>(4.9)</span></div> -->
           <!-- <div class="badges">
             <span>ID Verified</span>
             <span>Licensed</span>
@@ -39,67 +47,13 @@
             <a href="#" class="btn-primary">Hire</a>
           </div>
         </div>
-
-        <!-- CARD 2 -->
-        <div class="artisan-card">
-          <img class="avatar" src="{{url_for('static', filename='images/2.png')}}" alt="">
-
-          <h3>Emeka Adeyemi</h3>
-          <p class="skill">Certified Plumber</p>
-          <p class="location">Abuja, Nigeria</p>
-          <p class="jobs">Completed 96 Projects</p>
-          <div class="rating">★★★★★ <span>(4.8)</span></div>
-          <!-- <div class="badges">
-            <span>Escrow Protected</span>
-            <span>Top Rated</span>
-          </div> -->
-          <div class="card-actions">
-            <a href="#" class="btn-outline">View Profile</a>
-            <a href="#" class="btn-primary">Hire</a>
-          </div>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="artisan-card">
-          <img class="avatar" src="{{url_for('static', filename='images/2.png')}}" alt="">
-
-          <h3>Samuel Nwankwo</h3>
-          <p class="skill">Finishing Carpenter</p>
-          <p class="location">Port Harcourt, Nigeria</p>
-          <p class="jobs">Completed 74 Projects</p>
-          <div class="rating">★★★★★ <span>(5.0)</span></div>
-          <!-- <div class="badges">
-            <span>Premium Finish</span>
-            <span>ID Verified</span>
-          </div> -->
-          <div class="card-actions">
-            <a href="#" class="btn-outline">View Profile</a>
-            <a href="#" class="btn-primary">Hire</a>
-          </div>
-        </div>
-
-        <!-- CARD 4 -->
-        <div class="artisan-card">
-          <img class="avatar" src="{{url_for('static', filename='images/1.png')}}" alt="">
-
-          <h3>Amina Garba</h3>
-          <p class="skill">Interior Painter</p>
-          <p class="location">Kano, Nigeria</p>
-          <p class="jobs">Completed 112 Projects</p>
-          <div class="rating">★★★★★ <span>(4.7)</span></div>
-          <!-- <div class="badges">
-            <span>Background Checked</span>
-          </div> -->
-          <div class="card-actions">
-            <a href="#" class="btn-outline">View Profile</a>
-            <a href="#" class="btn-primary">Hire</a>
-          </div>
-        </div>
+        {% endfor %}
+        {% endif %}
       </div>
 
-      <!-- <p class="directory-note">
-        150+ actively available artisans across Nigeria. Updated weekly.
-      </p> -->
+      <p class="directory-note">
+        {{count}}+ actively available artisans across Nigeria. Updated weekly.
+      </p>
     </div>
   </section>
 

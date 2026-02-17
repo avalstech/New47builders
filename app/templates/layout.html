@@ -37,7 +37,11 @@
         <a href="{{url_for('how_it_works_page')}}">How It Works</a>
         <a href="{{url_for('artisans_page')}}">Artisans</a>
         <a href="{{url_for('contact_page')}}">Contact</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{url_for('artisan_dashboard_page')}}" class="nav-cta">Artisan Dashboard</a>
+        {% else %}
         <a href="{{url_for('artisan_login_page')}}" class="nav-cta">Artisan Sign-In</a>
+        {% endif %}
       </nav>
 
       <button class="nav-toggle" id="navToggle">
@@ -60,10 +64,8 @@
         <!-- Navigation Links -->
         <nav class="footerNav">
           <a href="{{url_for('how_it_works_page')}}">How It Works</a>
-          <a href="{{url_for('builders_page')}}">Builders</a>
           <a href="{{url_for('artisans_page')}}">Artisans</a>
           <a href="{{url_for('contact_page')}}">Contact</a>
-          <a href="{{url_for('contact_page')}}">Support</a>
           <a href="#top">Back to Top</a>
         </nav>
 
@@ -73,7 +75,6 @@
           <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
           <a href="https://www.instagram.com/profile" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <!-- <a href="https://github.com/profile" aria-label="GitHub"><i class="fab fa-github"></i></a> -->
           <a href="https://x.com/profile" aria-label="X"><i class="fab fa-x-twitter"></i></a>
           <a href="https://www.linkedin.com/company/mjsflo/" aria-label="LinkedIn"><i
               class="fab fa-linkedin-in"></i></a>

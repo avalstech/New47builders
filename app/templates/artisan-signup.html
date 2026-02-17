@@ -21,14 +21,19 @@
 
 <section class="auth-section">
   <div class="auth-card">
-    <p class="auth-subtitle">
-      Fill in your details and our verification team will review your application.
-    </p>
-
     <form method="POST" enctype="multipart/form-data" id="artisanSignupForm" class="form auth-form">
+      <div class="profile-upload">
+        <label for="profileInput" class="profile-label">
+          <div class="profile-preview" id="profilePreview">
+            <span>Upload Profile Photo</span>
+          </div>
+          <input type="file" id="profileInput" name="profile" accept="image/*" required/>
+        </label>
+      </div>
+
       <div class="formRow">
-        <input type="text" name="firstName" class="input" placeholder="first Name" required />
-        <input type="text" name="lastName" class="input" placeholder="last Name" required />
+        <input type="text" name="firstName" class="input" placeholder="First Name" required />
+        <input type="text" name="lastName" class="input" placeholder="Last Name" required />
         <input type="text" name="businessName" class="input" placeholder="Business Name (optional)" />
       </div>
 
@@ -81,7 +86,8 @@
       </div>
 
       <textarea name="about" class="textarea"
-        placeholder="Tell us about your work, typical project size, and the locations you serve." required></textarea>
+        placeholder="Tell us about your work, typical project size, and the locations you serve." required>
+      </textarea>
 
       <div class="auth-checkbox-row">
         <label class="checkbox-label">
@@ -113,5 +119,22 @@
     </p>
   </div>
 </section>
+
+<script>
+  const profileInput = document.getElementById("profileInput");
+  const profilePreview = document.getElementById("profilePreview");
+
+  profileInput.addEventListener("change", function () {
+    const file = this.files[0];
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        profilePreview.innerHTML = `<img src="${e.target.result}" />`;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
 
 {% endblock content %}

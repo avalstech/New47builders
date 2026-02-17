@@ -1,6 +1,10 @@
 {% extends 'layout.html' %}
 {% block content %}
 
+<div style="display: flex; justify-content: center; margin-top: 40px;">
+  {% include 'msgFlash.html' %}
+</div>
+
 <!-- HERO -->
 <section class="hero premiumHero" id="top">
   <div class="heroContent heroContainer">
@@ -12,7 +16,7 @@
       </h1>
 
       <p class="heroSubtitle">
-        Hire fully verified builders and artisans, track your project progress in real-time, 
+        Hire fully verified builders and artisans, track your project progress in real-time,
         and enjoy secure milestone-based payments that protect your investment.
       </p>
 
@@ -46,8 +50,8 @@
   <div class="sectionContent center">
     <h2 class="sectionTitle">Why 47Builders Exists</h2>
     <p class="sectionText">
-      Building from the diaspora shouldn’t be stressful or risky. 
-      47Builders provides a trusted, technology-driven platform to hire verified professionals, 
+      Building from the diaspora shouldn’t be stressful or risky.
+      47Builders provides a trusted, technology-driven platform to hire verified professionals,
       manage construction milestones, and ensure every phase of your project is delivered exactly as promised.
     </p>
   </div>
@@ -60,46 +64,54 @@
 
     <div class="grid">
 
-      <div class="card featureCard premium-card">
-        <div class="iconWrapper premium-icon">
-          <i class="fas fa-user-check"></i>
+      <a style="text-decoration-line: none;" href="{{url_for('artisans_page')}}">
+        <div class="card featureCard premium-card">
+          <div class="iconWrapper premium-icon">
+            <i class="fas fa-user-check"></i>
+          </div>
+          <h3>1. Find Verified Builders</h3>
+          <p>
+            Browse a curated list of vetted builders and artisans, complete with ID verification,
+            past projects, and authentic reviews.
+          </p>
         </div>
-        <h3>1. Find Verified Builders</h3>
-        <p>
-          Browse a curated list of vetted builders and artisans, complete with ID verification,
-          past projects, and authentic reviews.
-        </p>
-      </div>
+      </a>
 
-      <div class="card featureCard premium-card">
-        <div class="iconWrapper premium-icon">
-          <i class="fas fa-file-invoice-dollar"></i>
+      <a style="text-decoration-line: none;" href="{{url_for('contact_page')}}">
+        <div class="card featureCard premium-card">
+          <div class="iconWrapper premium-icon">
+            <i class="fas fa-file-invoice-dollar"></i>
+          </div>
+          <h3>2. Get Transparent Quotes</h3>
+          <p>
+            Submit your project details and receive structured quotes you can compare side-by-side.
+          </p>
         </div>
-        <h3>2. Get Transparent Quotes</h3>
-        <p>
-          Submit your project details and receive structured quotes you can compare side-by-side.
-        </p>
-      </div>
+      </a>
 
-      <div class="card featureCard premium-card">
-        <div class="iconWrapper premium-icon">
-          <i class="fas fa-camera"></i>
+      <a style="text-decoration-line: none;" href="{{url_for('contact_page')}}">
+        <div class="card featureCard premium-card">
+          <div class="iconWrapper premium-icon">
+            <i class="fas fa-camera"></i>
+          </div>
+          <h3>3. Track Your Build Remotely</h3>
+          <p>
+            Monitor progress with photo and video reports, milestone updates, and real-time messaging.
+          </p>
         </div>
-        <h3>3. Track Your Build Remotely</h3>
-        <p>
-          Monitor progress with photo and video reports, milestone updates, and real-time messaging.
-        </p>
-      </div>
+      </a>
 
-      <div class="card featureCard premium-card">
-        <div class="iconWrapper premium-icon">
-          <i class="fas fa-hand-holding-usd"></i>
+      <a style="text-decoration-line: none;" href="{{url_for('contact_page')}}">
+        <div class="card featureCard premium-card">
+          <div class="iconWrapper premium-icon">
+            <i class="fas fa-hand-holding-usd"></i>
+          </div>
+          <h3>4. Pay Securely with Escrow</h3>
+          <p>
+            Your funds are protected and only released after approved milestones.
+          </p>
         </div>
-        <h3>4. Pay Securely with Escrow</h3>
-        <p>
-          Your funds are protected and only released after approved milestones.
-        </p>
-      </div>
+      </a>
 
     </div>
   </div>
@@ -111,28 +123,25 @@
     <h2 class="sectionTitle center">Top Artisans</h2>
 
     <div class="grid">
-
-      <!-- Artisan Card 1 -->
-      <div class="card artisan-card premium-card">
-        <div class="avatar">
-          <img src="{{ url_for('static', filename='images/2.png') }}" alt="Engineer Charles">
-        </div>
-        <h3>Engineer Charles</h3>
-        <p class="tag"><i class="fa-solid fa-hammer"></i> Bricklayer / Mason</p>
-        <p class="meta"><i class="fa-solid fa-location-dot"></i> Benin, Nigeria</p>
-        <p class="meta premium-rating"><i class="fa-solid fa-star"></i> 4.9 • 1200 jobs</p>
-      </div>
-
+      {% if artisan is none %}
       <!-- Artisan Card 2 -->
       <div class="card artisan-card premium-card">
-        <div class="avatar">
-          <img src="{{ url_for('static', filename='images/1.png') }}" alt="Jacob Paul">
-        </div>
-        <h3>Jacob Paul</h3>
-        <p class="tag"><i class="fa-solid fa-screwdriver-wrench"></i> Carpenter</p>
-        <p class="meta"><i class="fa-solid fa-location-dot"></i> Abuja, Nigeria</p>
-        <p class="meta premium-rating"><i class="fa-solid fa-star"></i> 4.7 • 850 jobs</p>
+        <h3>No Featured Artisan Yet</h3>
       </div>
+
+      {% else %}
+      {% for a in artisan %}
+      <div class="card artisan-card premium-card">
+        <div class="avatar">
+          <img src="{{ url_for('static', filename='artisan/profile_pics/' + a.profile_img) }}" alt="Jacob Paul">
+        </div>
+        <h3>{{a.lastName}} {{a.firstName}}</h3>
+        <p class="tag"><i class="fa-solid fa-screwdriver-wrench"></i> {{a.primaryTrade}}</p>
+        <p class="meta"><i class="fa-solid fa-location-dot"></i> {{a.location}}, Nigeria</p>
+        <p class="meta premium-rating"><i class="fa-solid fa-star"></i> Years of Experience • {{a.experienceYears}}.0</p>
+      </div>
+      {% endfor %}
+      {% endif %}
 
     </div>
   </div>

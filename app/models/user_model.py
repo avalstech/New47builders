@@ -28,6 +28,7 @@ class Artisan(db.Model, UserMixin):
     gender = db.Column(db.String(50))
     profile_img = db.Column(db.String(50), nullable=False, default= "defaults.png" )
     is_admin = db.Column(db.Boolean, default=False)
+    feactured = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     

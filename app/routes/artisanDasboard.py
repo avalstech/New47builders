@@ -15,6 +15,7 @@ def artisan_dashboard_page():
 
 
 @app.route("/artisan-profile")
+@login_required
 def artisan_profile_page():
     artisan = Artisan.query.filter_by(id=current_user.id).first()
     return render_template("artisan-profile.html", artisan=artisan)

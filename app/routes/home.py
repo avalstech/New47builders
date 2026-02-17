@@ -1,10 +1,13 @@
 from app import app
-from flask import render_template
+from flask import render_template, url_for
+
+from app.models.user_model import Artisan
 
 
 @app.route("/")
 def landing_page():
-    return render_template("index.html")
+    artisan = Artisan.query.filter_by(feactured=True).limit(3).all()
+    return render_template("index.html", artisan=artisan)
 
 @app.route("/how-it-works")
 def how_it_works_page():
@@ -16,7 +19,9 @@ def builders_page():
 
 @app.route("/artisans")
 def artisans_page():
-    return render_template("artisans.html")
+    artisan = Artisan.query.all()
+    count = Artisan.query.count()
+    return render_template("artisans.html", artisan=artisan, count=count)
 
 @app.route("/contact")
 def contact_page():

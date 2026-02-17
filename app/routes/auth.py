@@ -9,7 +9,7 @@ load_dotenv()
 def save_pics(form_pics):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_pics.filename)
-    path_ext = 'artisan/assets/profile_pics/'
+    path_ext = 'artisan/profile_pics/'
     pics_fn = random_hex + f_ext
     pics_path = os.path.join(current_app.root_path, 'static', path_ext, pics_fn)
     # Ensure the directory exists
@@ -19,7 +19,7 @@ def save_pics(form_pics):
 
 def delete_image(image_filename):
     if image_filename:  # Check if the image filename is not None or empty
-        image_path = os.path.join(app.root_path, 'static/artisan/assets/profile_pics/', image_filename)
+        image_path = os.path.join(app.root_path, 'static/artisan/profile_pics/', image_filename)
         
         if os.path.exists(image_path):
             os.remove(image_path)
@@ -47,7 +47,7 @@ def artisan_signup_page():
     password = request.form.get('password')
     confirmPassword = request.form.get('confirmPassword')
     gender = request.form.get('gender')
-
+    profile_img = request.files.get("profile")
 
     artisan = Artisan.query.filter_by(email=email).first()
 
@@ -62,10 +62,10 @@ def artisan_signup_page():
     if request.method == 'POST':
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
         
-        # if profile_img.data:
-        #     pics_file = save_pics(profile_img.data)
-        # else:
-        #     pics_file = None  
+        if profile_img:
+            pics_file = save_pics(profile_img)
+        else:
+            pics_file = None  
 
         artisanData = Artisan(
             email = email,
@@ -81,15 +81,14 @@ def artisan_signup_page():
             about = about,
             phone = phone,
             gender= gender,
-            password = hashed_password
+            password = hashed_password,
+            profile_img = pics_file
         )
-
         db.session.add(artisanData)
         db.session.commit()
 
         flash("Account created successfully, Please login....", "success")
         return redirect(url_for('artisan_login_page'))
-    
     return render_template("artisan-signup.html")
 
 
