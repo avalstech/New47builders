@@ -15,7 +15,12 @@
       Get access to high value projects from diaspora clients, build your reputation,
       and get paid securely through milestone based payments.
     </p>
+
   </div>
+  <div style="padding-top: 50px;">
+    <span class="hero-badge">All information are required for a successful registeration</span>
+  </div>
+
 </section>
 
 
@@ -27,7 +32,7 @@
           <div class="profile-preview" id="profilePreview">
             <span>Upload Profile Photo</span>
           </div>
-          <input type="file" id="profileInput" name="profile" accept="image/*" required/>
+          <input type="file" id="profileInput" name="profile" accept="image/*" required />
         </label>
       </div>
 
@@ -126,7 +131,7 @@
 
   profileInput.addEventListener("change", function () {
     const file = this.files[0];
-    
+
     if (file) {
       const reader = new FileReader();
       reader.onload = function (e) {

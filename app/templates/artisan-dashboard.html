@@ -1,176 +1,406 @@
 {% extends 'artisanDasboardLayout.html' %}
 {% block content %}
 
-<div style="display: flex; justify-content: center; margin-top: 40px;">
+<style>
+
+/* ================================
+   47Builders Executive Dashboard
+   Black • Gold • Dark Navy
+================================ */
+
+/* Base */
+body {
+  background: #0b0f1a; /* deep navy */
+  color: #e5e7eb;
+  font-family: "Inter", sans-serif;
+}
+
+/* Dashboard Wrapper */
+.dashboard {
+  padding: 50px;
+}
+
+/* ================================
+   Header
+================================ */
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.dash-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.dash-header p {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 14px;
+}
+
+/* ================================
+   Grid Layout
+================================ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+/* ================================
+   Card
+================================ */
+
+.card {
+  background: linear-gradient(145deg, #111827, #0b0f1a);
+  padding: 26px;
+  border-radius: 18px;
+  border: 1px solid rgba(212, 175, 55, 0.08);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.08);
+}
+
+/* subtle gold glow */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(212,175,55,0.15), transparent);
+  transform: rotate(25deg);
+}
+
+/* Wide card */
+.wide {
+  grid-column: span 2;
+}
+
+/* ================================
+   Card Top
+================================ */
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.card h3 {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+}
+
+/* ================================
+   Text Styling
+================================ */
+
+.muted {
+  color: #94a3b8;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+small {
+  color: #94a3b8;
+}
+
+strong {
+  color: #ffffff;
+}
+
+/* ================================
+   Wallet
+================================ */
+
+.balance {
+  font-size: 30px;
+  font-weight: 700;
+  color: #d4af37; /* gold highlight */
+  margin-bottom: 6px;
+}
+
+.wallet-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.wallet-stats strong {
+  font-size: 15px;
+}
+
+/* ================================
+   Buttons
+================================ */
+
+.btn {
+  padding: 9px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn.small {
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+/* Gold Primary */
+.btn.primary {
+  background: #d4af37;
+  color: #000;
+  font-weight: 600;
+}
+
+.btn.primary:hover {
+  background: #f5cc4b;
+}
+
+/* Ghost Button */
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+}
+
+.btn.ghost:hover {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+/* Links */
+.link {
+  background: none;
+  border: none;
+  color: #d4af37;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   Progress Bar
+================================ */
+
+.progress {
+  height: 8px;
+  background: #1f2937;
+  border-radius: 8px;
+  margin: 18px 0;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background: linear-gradient(to right, #d4af37, #f5cc4b);
+  border-radius: 8px;
+  transition: width 0.4s ease;
+}
+
+/* ================================
+   Form
+================================ */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+select {
+  background: #0b0f1a;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  color: #e5e7eb;
+}
+
+select:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+
+/* Placeholder */
+.placeholder {
+  color: #64748b;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+/* ================================
+   Responsive
+================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .dashboard {
+    padding: 30px;
+  }
+
+  .wide {
+    grid-column: span 1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 20px;
+  }
+
+  .dash-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .actions .btn {
+    flex: 1;
+  }
+
+  .grid {
+    gap: 20px;
+  }
+}
+
+</style>
+
+<div class="dashboard">
+
   {% include 'msgFlash.html' %}
+
+  <!-- Header -->
+  <div class="dash-header">
+    <div>
+      <h1>Dashboard</h1>
+      <p>Manage projects and earnings</p>
+    </div>
+    <div class="actions">
+      <button class="btn ghost">Refresh</button>
+      <button class="btn primary">Find Jobs</button>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid">
+
+    <!-- Project -->
+    <div class="card">
+      <div class="card-top">
+        <h3>Current Project</h3>
+        <button class="link">Edit</button>
+      </div>
+
+      <strong>Lekki Duplex Renovation</strong>
+      <span class="muted">Tiling • Phase 2</span>
+
+      <div class="progress">
+        <div class="bar" style="width:62%"></div>
+      </div>
+
+      <div class="card-bottom">
+        <small>Due in 6 days</small>
+        <button class="btn small">Update</button>
+      </div>
+    </div>
+
+    <!-- Wallet -->
+    <div class="card">
+      <div class="card-top">
+        <h3>Wallet</h3>
+        <button class="link">Withdraw</button>
+      </div>
+
+      <div class="balance">₦250,000</div>
+      <span class="muted">Available balance</span>
+
+      <div class="wallet-stats">
+        <div>
+          <small>Pending</small>
+          <strong>₦90,000</strong>
+        </div>
+        <div>
+          <small>This month</small>
+          <strong>₦410,000</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jobs -->
+    <div class="card">
+      <h3>Find Jobs</h3>
+
+      <form class="form">
+        <select>
+          <option>All Skills</option>
+          <option selected>Tiling</option>
+          <option>Plumbing</option>
+        </select>
+
+        <select>
+          <option selected>Lagos</option>
+          <option>Benin</option>
+        </select>
+
+        <button class="btn primary">Search</button>
+      </form>
+    </div>
+
+    <!-- Invites -->
+    <div class="card">
+      <div class="card-top">
+        <h3>Invites</h3>
+        <button class="link">Mark Read</button>
+      </div>
+      <div class="placeholder">No new invites</div>
+    </div>
+
+    <!-- Messages -->
+    <div class="card wide">
+      <div class="card-top">
+        <h3>Messages</h3>
+        <button class="btn small">New</button>
+      </div>
+      <div class="placeholder">
+        Select a conversation to start chatting
+      </div>
+    </div>
+
+  </div>
 </div>
 
- 
-      <section class="pageHead" id="overview">
-        <div>
-          <h1>Dashboard</h1>
-          <p class="muted">Manage your jobs, invites, messages, location availability, and wallet.</p>
-        </div>
-
-        <div class="headActions">
-          <button class="btn" id="refreshBtn" type="button">Refresh</button>
-          <button class="btn primary" id="findJobsBtn" type="button">Find jobs</button>
-        </div>
-      </section>
-
-      <section class="grid">
-        <article class="card">
-          <div class="cardTop">
-            <h2>Current project status</h2>
-            <button class="linkBtn" id="editProjectBtn" type="button">Edit</button>
-          </div>
-
-          <div class="projectBox">
-            <div class="projRow">
-              <div>
-                <div class="label">Project</div>
-                <div class="value" id="projName">Lekki Duplex Renovation</div>
-              </div>
-              <div>
-                <div class="label">Role</div>
-                <div class="value" id="projRole">Tiling and Finishing</div>
-              </div>
-            </div>
-
-            <div class="projRow">
-              <div>
-                <div class="label">Milestone</div>
-                <div class="value" id="projMilestone">Floor tiling (Phase 2)</div>
-              </div>
-              <div>
-                <div class="label">Status</div>
-                <div class="statusPill" id="projStatus">In progress</div>
-              </div>
-            </div>
-
-            <div class="progWrap" aria-label="Milestone progress">
-              <div class="progBar" id="projBar" style="width: 62%"></div>
-            </div>
-
-            <div class="projFoot">
-              <div class="mutedSmall" id="projMeta">Due in 6 days · Last update: today</div>
-              <button class="btn small" id="postUpdateBtn" type="button">Post update</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="cardTop">
-            <h2>Account balance</h2>
-            <button class="linkBtn" id="withdrawBtn" type="button">Withdraw</button>
-          </div>
-
-          <div class="walletBox">
-            <div class="walletMain">
-              <div class="walletAmt" id="walletBalance">₦250,000</div>
-              <div class="mutedSmall">Available balance</div>
-            </div>
-
-            <div class="walletGrid">
-              <div class="mini">
-                <div class="label">Pending</div>
-                <div class="value" id="walletPending">₦90,000</div>
-              </div>
-              <div class="mini">
-                <div class="label">This month</div>
-                <div class="value" id="walletMonth">₦410,000</div>
-              </div>
-            </div>
-
-            <button class="btn primary" id="viewWalletBtn" type="button">View wallet</button>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="cardTop">
-            <h2>Job search</h2>
-            <button class="linkBtn" id="saveFiltersBtn" type="button">Save filters</button>
-          </div>
-
-          <form class="filters" id="jobSearchForm">
-            <label class="field">
-              Skill
-              <select name="skill" id="skillSelect">
-                <option value="all">All</option>
-                <option value="masonry">Masonry</option>
-                <option value="tiling" selected>Tiling</option>
-                <option value="carpentry">Carpentry</option>
-                <option value="plumbing">Plumbing</option>
-                <option value="electrical">Electrical</option>
-                <option value="painting">Painting</option>
-              </select>
-            </label>
-
-            <label class="field">
-              City
-              <select name="city" id="citySelect">
-                <option value="lagos" selected>Lagos</option>
-                <option value="benin">Benin City</option>
-                <option value="ph">Port Harcourt</option>
-              </select>
-            </label>
-
-            <label class="field">
-              Budget
-              <select name="budget" id="budgetSelect">
-                <option value="all">Any</option>
-                <option value="low">₦50k to ₦150k</option>
-                <option value="mid" selected>₦150k to ₦500k</option>
-                <option value="high">₦500k+</option>
-              </select>
-            </label>
-
-            <button class="btn primary" type="submit">Search jobs</button>
-          </form>
-
-          <div class="list" id="jobsList" aria-label="Search results"></div>
-        </article>
-
-        <article class="card">
-          <div class="cardTop">
-            <h2>Job invites</h2>
-            <button class="linkBtn" id="markInvitesReadBtn" type="button">Mark all read</button>
-          </div>
-
-          <div class="list" id="invitesList" aria-label="Invites list"></div>
-        </article>
-
-        <article class="card full">
-          <div class="cardTop">
-            <h2>Messages</h2>
-            <div class="cardTopRight">
-              <input class="search" id="messageSearch" type="search" placeholder="Search messages"
-                aria-label="Search messages" />
-              <button class="btn small" id="newMsgBtn" type="button">New message</button>
-            </div>
-          </div>
-
-          <div class="messages">
-            <div class="threads" id="threads" aria-label="Conversation threads"></div>
-
-            <div class="chat">
-              <div class="chatHead">
-                <div>
-                  <div class="label">Chat</div>
-                  <div class="value" id="chatTitle">Select a conversation</div>
-                </div>
-                <button class="btn small" id="openJobBtn" type="button" disabled>Open job</button>
-              </div>
-
-              <div class="chatBody" id="chatBody" aria-label="Chat messages"></div>
-
-              <form class="chatComposer" id="chatForm">
-                <input id="chatInput" type="text" placeholder="Type a message…" autocomplete="off" />
-                <button class="btn primary" type="submit" id="sendBtn" disabled>Send</button>
-              </form>
-            </div>
-          </div>
-        </article>
-      </section>
-
-    {% endblock content %}
+{% endblock content %}
